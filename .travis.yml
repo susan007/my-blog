@@ -4,6 +4,6 @@ node_js:
 install: true
 script: npm run docs:build
 after_success:
-  - bash deploy.sh
+  - npm run deploy
 
 
