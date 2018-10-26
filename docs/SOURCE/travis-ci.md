@@ -44,5 +44,8 @@ git push -f -q https://$BLOG_TOKEN@github.com/susan007/susan007.github.io.git ma
 ```
 ##### 5、事已至此，当你把博客推到github的时候，会自动执行.travis.yml中的内容。执行结果可去官网查看。
 
+PS: 更详细的步骤请参考
+https://www.jianshu.com/p/e22c13d85659
+https://www.jianshu.com/p/5691815b81b6
 
 ## Jenkins
