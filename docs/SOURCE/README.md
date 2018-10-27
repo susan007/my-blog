@@ -1,6 +1,6 @@
 
 <img src="../.vuepress/public/icons/icon_sketch.png" align="center"/>
 
-## 学习资源
+## 一些题外话
 
-### 分享优秀的书籍和学习视频等学习资料。
+### 分享学习资料、技术杂文、生活感悟

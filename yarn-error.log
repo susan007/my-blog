@@ -1,0 +1,41 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Users\Administrator\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Administrator\bin;C:\Ruby25-x64\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\PROGRA~1\PTC\MKSTOO~1\bin64;C:\PROGRA~1\PTC\MKSTOO~1\bin;C:\PROGRA~1\PTC\MKSTOO~1\bin\X11;C:\PROGRA~1\PTC\MKSTOO~1\mksnt;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;I:\Windows7Master;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-10.0.1\bin;C:\Program Files\Java\jdk-10.0.1\jre\bin;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  10.12.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ETIMEDOUT 104.16.16.35:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1113:14)
+
+npm manifest: 
+  {
+    "devDependencies": {
+      "gh-pages": "^2.0.0",
+      "vuepress": "^0.14.4"
+    },
+    "scripts": {
+      "docs:dev": "vuepress dev docs",
+      "docs:build": "vuepress build docs",
+      "deploy": "bash deploy.sh"
+    },
+    "dependencies": {
+      "element-ui": "^2.4.7",
+      "escape-string-regexp": "^1.0.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

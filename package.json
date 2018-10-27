@@ -9,6 +9,7 @@
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
-    "element-ui": "^2.4.7"
+    "element-ui": "^2.4.7",
+    "escape-string-regexp": "^1.0.5"
   }
 }
