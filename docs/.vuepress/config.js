@@ -7,6 +7,7 @@ module.exports = {
     head: [
         ['link', {rel: 'icon', href: `/flower.png`}],
         ['link', {rel: 'manifest', href: '/manifest.json'}],
+
     ],
     serviceWorker: true,
     themeConfig: {
