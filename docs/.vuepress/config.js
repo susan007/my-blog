@@ -99,7 +99,8 @@ module.exports = {
                         ['/SOURCE/node-oom','node编译内存溢出'],
                         ['/SOURCE/electron', '使用electron开发桌面应用'],
                         ['/SOURCE/深渊巨坑的attr', '深渊巨坑的attr'],
-                        ['/SOURCE/node升级引发的问题', 'node升级引发的问题']
+                        ['/SOURCE/node升级引发的问题', 'node升级引发的问题'],
+                        ['/SOURCE/require', 'Unresolved function or method require()']
                     ]
                 },
             ],
