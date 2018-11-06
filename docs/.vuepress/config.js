@@ -67,7 +67,8 @@ module.exports = {
                         ['/WEB/VUE/vue05', 'vue-cli脚手架之webpack.prod.conf.js'],
                         ['/WEB/VUE/vue06', 'vue-cli脚手架之webpack.test.conf.js'],
                         ['/WEB/VUE/vue07', 'vue-cli脚手架之package.json'],
-                        ['/WEB/VUE/vue08', 'vue-cli脚手架之其他文件解释']
+                        ['/WEB/VUE/vue08', 'vue-cli脚手架之其他文件解释'],
+                        ['/WEB/VUE/vuex', 'Vuex的初体验']
                     ]
                 }, {
                     title: 'HTTP',
