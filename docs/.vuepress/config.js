@@ -46,7 +46,8 @@ module.exports = {
                         ['/WEB/JS/javascript之for循环的几种写法', 'javascript之for循环的几种写法'],
                         ['/WEB/JS/javascript运算符之等于', 'javascript运算符之==和==='],
                         ['/WEB/JS/javascript原型', 'javascript之原型'],
-                        ['/WEB/JS/js运算符',' js 运算符']
+                        ['/WEB/JS/js运算符',' js 运算符'],
+                        ['/WEB/JS/数组', '数组之增删改']
                     ]
                 }, {
                     title: 'CSS',
