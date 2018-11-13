@@ -53,5 +53,24 @@ js语句
 * 对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。
 * 对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。
 
+## 又一特殊情况
+获取label的值
+```js
+// js语法
+var labelVal = document.getElementById('mlabel').innerText
+```
+```js
+// jquery语法
+let labelVal = $('#mlabel').html()
+```
+给label赋值
+```js
+// js语法
+let mlabel = document.getElementById('mlabel')
+mlabel.innerText='66666666'
+
+// jquery语法
+mlabel.html('88888888')
+```
 ###### 备注：这两句总结来自文章<a href="https://www.cnblogs.com/Showshare/p/different-between-attr-and-prop.html">prop和attr</a>
 
