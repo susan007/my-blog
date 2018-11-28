@@ -47,7 +47,8 @@ module.exports = {
                         ['/WEB/JS/javascript运算符之等于', 'javascript运算符之==和==='],
                         ['/WEB/JS/javascript原型', 'javascript之原型'],
                         ['/WEB/JS/js运算符',' js 运算符'],
-                        ['/WEB/JS/数组', '数组之增删改']
+                        ['/WEB/JS/数组', '数组之增删改'],
+                        ['/WEB/JS/assign', 'assign()方法']
                     ]
                 }, {
                     title: 'CSS',
@@ -55,7 +56,8 @@ module.exports = {
                     children: [
                         ['/WEB/CSS/bilibili', '前端动画小记---bilibili ( ゜-゜)つロ客户下载小动画'],
                         ['/WEB/CSS/background-position为什么会出现负值？', 'background-position为什么会出现负值？'],
-                        ['/WEB/CSS/svg日出', 'svg动画之日出']
+                        ['/WEB/CSS/svg日出', 'svg动画之日出'],
+                        ['/WEB/CSS/单位', '单位之px-em-rem']
                     ]
                 }, {
                     title: 'VUE',
@@ -69,7 +71,10 @@ module.exports = {
                         ['/WEB/VUE/vue06', 'vue-cli脚手架之webpack.test.conf.js'],
                         ['/WEB/VUE/vue07', 'vue-cli脚手架之package.json'],
                         ['/WEB/VUE/vue08', 'vue-cli脚手架之其他文件解释'],
-                        ['/WEB/VUE/vuex', 'Vuex的初体验']
+                        ['/WEB/VUE/vuex', 'Vuex的初体验'],
+                        ['/WEB/VUE/vue-router', 'vue-router的使用'],
+                        ['/WEB/VUE/vue使用第三方库', 'vue中使用第三方库的几种方式'],
+                        ['/WEB/VUE/插件', 'vue插件编写']
                     ]
                 }, {
                     title: 'HTTP',
@@ -104,7 +109,8 @@ module.exports = {
                         ['/SOURCE/深渊巨坑的attr', '深渊巨坑的attr'],
                         ['/SOURCE/node升级引发的问题', 'node升级引发的问题'],
                         ['/SOURCE/require', 'Unresolved function or method require()'],
-                        ['/SOURCE/puzzlers学习', 'puzzlers学习']
+                        ['/SOURCE/puzzlers学习', 'puzzlers学习'],
+                        ['/SOURCE/机器学习', '机器学习环境搭建']
                     ]
                 },
             ],
