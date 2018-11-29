@@ -112,7 +112,8 @@ module.exports = {
                         ['/SOURCE/node升级引发的问题', 'node升级引发的问题'],
                         ['/SOURCE/require', 'Unresolved function or method require()'],
                         ['/SOURCE/puzzlers学习', 'puzzlers学习'],
-                        ['/SOURCE/机器学习', '机器学习环境搭建']
+                        ['/SOURCE/机器学习', '机器学习环境搭建'],
+                        ['/SOURCE/vuepress注意', 'vuepress中的坑']
                     ]
                 },
             ],
