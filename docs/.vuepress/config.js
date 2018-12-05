@@ -114,7 +114,8 @@ module.exports = {
                         ['/SOURCE/puzzlers学习', 'puzzlers学习'],
                         ['/SOURCE/机器学习', '机器学习环境搭建'],
                         ['/SOURCE/vuepress注意', 'vuepress中的坑'],
-                        ['/SOURCE/express', 'express使用']
+                        ['/SOURCE/express', 'express使用'],
+                        ['/SOURCE/webpack', 'webpack相关']
                     ]
                 },
             ],
