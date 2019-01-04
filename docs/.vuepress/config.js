@@ -115,7 +115,8 @@ module.exports = {
                         ['/SOURCE/机器学习', '机器学习环境搭建'],
                         ['/SOURCE/vuepress注意', 'vuepress中的坑'],
                         ['/SOURCE/express', 'express使用'],
-                        ['/SOURCE/webpack', 'webpack相关']
+                        ['/SOURCE/webpack', 'webpack相关'],
+                        ['/SOURCE/获取页面源码', 'js获取当前页面源码的两种方式']
                     ]
                 },
             ],
