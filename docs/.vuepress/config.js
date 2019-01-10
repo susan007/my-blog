@@ -48,7 +48,8 @@ module.exports = {
                         ['/WEB/JS/javascript原型', 'javascript之原型'],
                         ['/WEB/JS/js运算符',' js 运算符'],
                         ['/WEB/JS/数组', '数组之增删改'],
-                        ['/WEB/JS/assign', 'assign()方法']
+                        ['/WEB/JS/assign', 'assign()方法'],
+                        ['/WEB/JS/json', 'js中的json']
                     ]
                 }, {
                     title: 'CSS',
@@ -116,7 +117,8 @@ module.exports = {
                         ['/SOURCE/vuepress注意', 'vuepress中的坑'],
                         ['/SOURCE/express', 'express使用'],
                         ['/SOURCE/webpack', 'webpack相关'],
-                        ['/SOURCE/获取页面源码', 'js获取当前页面源码的两种方式']
+                        ['/SOURCE/获取页面源码', 'js获取当前页面源码的两种方式'],
+                        ['/SOURCE/规范', '前端开发规范']
                     ]
                 },
             ],
