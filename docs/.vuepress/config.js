@@ -49,7 +49,8 @@ module.exports = {
                         ['/WEB/JS/js运算符',' js 运算符'],
                         ['/WEB/JS/数组', '数组之增删改'],
                         ['/WEB/JS/assign', 'assign()方法'],
-                        ['/WEB/JS/json', 'js中的json']
+                        ['/WEB/JS/json', 'js中的json'],
+                        ['/WEB/JS/js练习1', 'js练习之对象']
                     ]
                 }, {
                     title: 'CSS',
