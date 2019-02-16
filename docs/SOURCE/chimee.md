@@ -17,4 +17,6 @@ Chimee是由奇舞团开源的一套可扩展的H5组件化播放器框架，简
 
 ### 效果展示
 
-<chimee></chimee>
+<ClientOnly>
+ <chimee/>
+</ClientOnly>
