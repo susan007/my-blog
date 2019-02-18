@@ -51,7 +51,8 @@
         slot="bottom"
       />
     </Page>
-    <valine></valine>
+    <!--给除了首页以外的页面设置评论板-->
+    <valine v-if="!$page.frontmatter.home"></valine>
     <SWUpdatePopup :updateEvent="swUpdateEvent"/>
   </div>
 </template>
@@ -180,5 +181,4 @@ export default {
 }
 </script>
 
-<!--<style src="../../../node_modules/vuepress/lib/default-theme/prismjs/themes/prism-tomorrow.css"></style>-->
 <style src="../../../node_modules/vuepress/lib/default-theme/styles/theme.styl" lang="stylus"></style>
