@@ -16,7 +16,30 @@ Chimee是由奇舞团开源的一套可扩展的H5组件化播放器框架，简
 * 重复别人踩过的坑：如果你曾经从0开始开发你的H5播放器，一定会有深刻的体会，各种莫名其妙的问题接踵而至，让我们不得不放下正在做的事情，消耗掉大量的时间和精力去查证、解决，使用一套完备的解决方案，必然能让我们少走很多弯路。
 
 ### 效果展示
+本来写了一个组件来展示效果，如下所示。本地运行良好，run build却无法打包，我觉得是vuepress中访问浏览器API没有做好处理，按照官网的方法写得好是无法打包，气死我了！只能录一个gif展示效果╭(╯^╰)╮
 
-<ClientOnly>
- <chimee/>
-</ClientOnly>
+```js
+// chimee player组件使用
+<script>
+    export default {
+        name: "chimee",
+        data() {
+            return {
+                mid: 'container'
+            }
+        },
+        mounted() {
+            import('chimee-player').then(module => {
+                let ChimeePlayer = module.default
+                const chimee =new ChimeePlayer({
+                    wrapper: `#${this.mid}`,
+                    src: 'http://cdn.toxicjohann.com/lostStar.mp4',
+                    controls: false,
+                    autoplay: true
+                });
+            })
+        }
+    }
+</script>
+```
+![效果展示](../.vuepress/public/img_source/music.gif)
