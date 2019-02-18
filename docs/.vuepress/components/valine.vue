@@ -1,15 +1,19 @@
 <template>
-    <section style="border-top: 1px solid #eaecef;padding-top:1rem;margin-top:3rem;">
-        <div>
-            <!-- id 将作为查询条件 -->
-            <span class="leancloud-visitors"
-                  data-flag-title="Your Article Title">
+    <div class="page">
+        <section class="page-edit">
+            <!--占位标签-->
+            <div style="border-top: 1px solid #eaecef;height: 1rem"></div>
+            <div >
+                <!-- id 将作为查询条件 -->
+                <span class="leancloud-visitors"
+                      data-flag-title="Your Article Title">
                 <span class="post-meta-item-text">阅读量： </span>
                 <span class="leancloud-visitors-count"></span>
             </span>
-        </div>
-        <div id="vcomments" style="margin-top: 1rem"></div>
-    </section>
+            </div>
+            <div id="vcomments" style="margin-top: 1rem"></div>
+        </section>
+    </div>
 </template>
 
 <script>
