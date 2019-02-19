@@ -270,7 +270,7 @@ loop();
 ```
 
 ### 成果展示
-![](../../.vuepress/public/imgs_js/case/tq.gif)
+<boolgame/>
 
 参考文档：
 <a href="https://developer.mozilla.org">MDN WEB</a>
