@@ -120,7 +120,8 @@ module.exports = {
                         ['/SOURCE/webpack', 'webpack相关'],
                         ['/SOURCE/获取页面源码', 'js获取当前页面源码的两种方式'],
                         ['/SOURCE/规范', '前端开发规范'],
-                        ['/SOURCE/chimee', 'Html5播放器之Chimee初次接触']
+                        ['/SOURCE/chimee', 'Html5播放器之Chimee初次接触'],
+                        ['/SOURCE/npm私服', 'Nexus3搭建npm私服']
                     ]
                 },
             ],

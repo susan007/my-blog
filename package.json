@@ -12,16 +12,7 @@
     "docs:build": "vuepress build docs",
     "deploy": "bash deploy.sh",
     "test": "jest",
-    "jest": {
-      "moduleFileExtensions": [
-        "js",
-        "json",
-        "vue"
-      ],
-      "transform": {
-        ".*\\.(vue)$": "vue-jest"
-      }
-    }
+    "jest": "vuepress "
   },
   "dependencies": {
     "chimee": "^0.11.0",
