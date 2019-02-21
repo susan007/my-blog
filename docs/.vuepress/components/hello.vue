@@ -10,10 +10,14 @@
       name: 'hello',
       mounted() {
           this.add(1,2)
+          this.reduce(5, 2)
       },
       methods: {
           add(a, b) {
               return a+b
+          },
+          reduce(x, y) {
+              return x-y
           }
       }
   }
