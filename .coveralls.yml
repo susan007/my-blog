@@ -1,9 +1,0 @@
-service_name: travis-pro
-repo_token: EpW5HtoJKij2tdwVvOoMTaWuDtGXPGJG9
-coverageReporter: {
-  dir: path.join(__dirname, 'coverage'),
-  reporters: [
-  {type: 'html'},
-  {type: 'lcov', subdir: 'lcov'}  // lcov
-  ]
-},

@@ -1,7 +1,13 @@
 language: node_js
 node_js:
   - "8"
+before_install:
+  - npm install codecov
 install: npm install
-script: npm run deploy
+script:
+  - npm run deploy
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - codecov
+
 
 

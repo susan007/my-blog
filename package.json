@@ -24,7 +24,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "deploy": "bash deploy.sh",
-    "test": "jest --watchAll --coverage"
+    "test": "jest && codecov"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.1",
@@ -50,6 +50,9 @@
     "transform": {
       ".*\\.(vue)$": "vue-jest",
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
-    }
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"],
+    "coverageDirectory": "./coverage/"
   }
 }
