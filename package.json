@@ -23,8 +23,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "deploy": "bash deploy.sh",
-    "test": "jest && codecov"
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.1",
