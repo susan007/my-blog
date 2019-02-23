@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        name: "bool-game",
+        name: "boolgame",
         mounted() {
             this.play()
         },

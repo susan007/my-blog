@@ -9,12 +9,12 @@ describe('hello', () => {
     })
 
     // 测试加法
-    // test('加法的计算结果', () => {
-    //     expect(wrapper.vm.add(1,2)).toBe(3)
-    // })
-    //
-    // // 测试减法
-    // test('减法的计算结果', () => {
-    //     expect(wrapper.vm.reduce(6,3)).toEqual(3)
-    // })
+    test('加法的计算结果', () => {
+        expect(wrapper.vm.add(1,2)).toBe(3)
+    })
+
+    // 测试减法
+    test('减法的计算结果', () => {
+        expect(wrapper.vm.reduce(6,3)).toEqual(3)
+    })
 })

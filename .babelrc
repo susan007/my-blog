@@ -1,7 +1,15 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
-  "plugins": [
-    "@babel/plugin-proposal-object-rest-spread",
-    "@babel/plugin-transform-runtime"
+  "presets": [
+    ["env", {
+      "targets:": { "node": "8" } // change this to your node version
+    }]
   ]
 }
+
+//{
+//  "presets": ["@babel/preset-env", "@babel/preset-react"],
+//  "plugins": [
+//    "@babel/plugin-proposal-object-rest-spread",
+//    "@babel/plugin-transform-runtime"
+//  ]
+//}

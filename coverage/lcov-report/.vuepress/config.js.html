@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for .vuepress/config.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\prettify.css" />
+    <link rel="stylesheet" href="..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\index.html">All files</a> / <a href="index.html">.vuepress</a> config.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/1</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.export<span class="cstat-no" title="statement not covered" >s = {</span>
+    title: '静静是小花',
+    details: '个人博客搭建',
+    // base: '/my-blog/',//当打包到my-blog博客的时候才设置这个路径
+    base: '/',
+    description: '认识你自己',
+    head: [
+        ['link', {rel: 'icon', href: `/flower.png`}],
+        ['link', {rel: 'manifest', href: '/manifest.json'}],
+&nbsp;
+    ],
+    serviceWorker: true,
+    themeConfig: {
+        //添加导航栏
+        nav: [
+            {
+                text: '首页',
+                link: '/'
+            },
+            {
+                text: '前端',
+                link: '/WEB/'
+            },
+            {
+                text: '闲聊',
+                link: '/SOURCE/'
+            },
+            {
+                text: '关于',
+                link: '/PERSONAL/'
+            },
+            // {
+            //     text: 'Languages',
+            //     items: [
+            //         {text: 'English', link: '/language/english'},
+            //         {text: '简体中文', link: '/language/chinese'}
+            //     ]
+            // }
+        ],
+        sidebar: {
+            '/WEB/': [
+                {
+                    title: 'JS',
+                    collapsable: true,
+                    children: [
+                        ['/WEB/JS/javascript之for循环的几种写法', 'javascript之for循环的几种写法'],
+                        ['/WEB/JS/javascript运算符之等于', 'javascript运算符之==和==='],
+                        ['/WEB/JS/javascript原型', 'javascript之原型'],
+                        ['/WEB/JS/js运算符',' js 运算符'],
+                        ['/WEB/JS/数组', '数组之增删改'],
+                        ['/WEB/JS/assign', 'assign()方法'],
+                        ['/WEB/JS/json', 'js中的json'],
+                        ['/WEB/JS/js练习1', 'js练习之对象']
+                    ]
+                }, {
+                    title: 'CSS',
+                    collapsable: true,
+                    children: [
+                        ['/WEB/CSS/bilibili', '前端动画小记---bilibili ( ゜-゜)つロ客户下载小动画'],
+                        ['/WEB/CSS/background-position为什么会出现负值？', 'background-position为什么会出现负值？'],
+                        ['/WEB/CSS/svg日出', 'svg动画之日出'],
+                        ['/WEB/CSS/单位', '单位之px-em-rem']
+                    ]
+                }, {
+                    title: 'VUE',
+                    collapsable: true,
+                    children: [
+                        ['/WEB/VUE/vue01', 'vue-cli脚手架目录一览'],
+                        ['/WEB/VUE/vue02', 'vue-cli脚手架之build文件夹上半部'],
+                        ['/WEB/VUE/vue03', 'vue-cli脚手架之webpack.base.conf.js'],
+                        ['/WEB/VUE/vue04', 'vue-cli脚手架之webpack.dev.conf.js'],
+                        ['/WEB/VUE/vue05', 'vue-cli脚手架之webpack.prod.conf.js'],
+                        ['/WEB/VUE/vue06', 'vue-cli脚手架之webpack.test.conf.js'],
+                        ['/WEB/VUE/vue07', 'vue-cli脚手架之package.json'],
+                        ['/WEB/VUE/vue08', 'vue-cli脚手架之其他文件解释'],
+                        ['/WEB/VUE/vuex', 'Vuex的初体验'],
+                        ['/WEB/VUE/vue-router', 'vue-router的使用'],
+                        ['/WEB/VUE/vue使用第三方库', 'vue中使用第三方库的几种方式'],
+                        ['/WEB/VUE/插件', 'vue插件编写'],
+                        ['/WEB/VUE/插槽', 'vue插槽使用'],
+                        ['/WEB/VUE/传值', 'vue组件间通讯']
+                    ]
+                }, {
+                    title: 'HTTP',
+                    collapsable: true,
+                    children: [
+                        ['/WEB/HTTP/httpCode','http-status-code 必知必会']
+                    ]
+                },{
+                title: 'ES6',
+                    collapsable: true,
+                    children: [
+                        ['/WEB/ES6/var-let-const','var、let和const'],
+                        ['/WEB/ES6/模板字符串','Es6模板字符串'],
+                        ['/WEB/ES6/解构', '解构'],
+                        ['/WEB/ES6/箭头函数', '箭头函数'],
+                        ['/WEB/ES6/Es6运行环境', 'Es6执行环境搭建'],
+                        ['/WEB/ES6/集合','集合'],
+                        ['/WEB/ES6/Promise', 'Promise使用']
+                    ]
+                }
+            ],
+            '/SOURCE/': [
+                {
+                    title: '杂谈',
+                    collapsable: true,
+                    children: [
+                        ['/SOURCE/句子迷', '***句子迷***'],
+                        ['/SOURCE/数据可视化框架','数据可视化框架收集'],
+                        ['/SOURCE/travis-ci','自动化构建工具'],
+                        ['/SOURCE/node-oom','node编译内存溢出'],
+                        ['/SOURCE/electron', '使用electron开发桌面应用'],
+                        ['/SOURCE/深渊巨坑的attr', '深渊巨坑的attr'],
+                        ['/SOURCE/node升级引发的问题', 'node升级引发的问题'],
+                        ['/SOURCE/require', 'Unresolved function or method require()'],
+                        ['/SOURCE/puzzlers学习', 'puzzlers学习'],
+                        ['/SOURCE/机器学习', '机器学习环境搭建'],
+                        ['/SOURCE/vuepress注意', 'vuepress中的坑'],
+                        ['/SOURCE/express', 'express使用'],
+                        ['/SOURCE/webpack', 'webpack相关'],
+                        ['/SOURCE/获取页面源码', 'js获取当前页面源码的两种方式'],
+                        ['/SOURCE/规范', '前端开发规范'],
+                        ['/SOURCE/chimee', 'Html5播放器之Chimee初次接触'],
+                        ['/SOURCE/npm私服', 'Nexus3搭建npm私服']
+                    ]
+                },
+            ],
+            '/PERSONAL/': [
+                {
+                    title: '个人介绍',
+                    collapsable: true,
+                    children: [
+                        ['/PERSONAL/个人简介', '个人简介'],
+                    ]
+                },
+                {
+                    title: '开源项目',
+                    collapsable: true,
+                    children: [
+                        ['/PERSONAL/开源项目一', '开源项目'],
+                    ]
+                }
+            ]
+        }
+    }
+&nbsp;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Feb 23 2019 15:53:31 GMT+0800 (中国标准时间)
+</div>
+</div>
+<script src="..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\sorter.js"></script>
+</body>
+</html>
