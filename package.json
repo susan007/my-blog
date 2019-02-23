@@ -8,6 +8,7 @@
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^6.26.3",
     "babel-jest": "^24.1.0",
+    "babel-loader": "^8.0.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-mobx": "^2.0.0",
     "codecov": "^3.2.0",
@@ -16,6 +17,7 @@
     "gulp-babel": "^8.0.0",
     "jest": "^24.1.0",
     "vue-jest": "^3.0.3",
+    "vue-loader": "^15.6.4",
     "vue-test-utils": "^1.0.0-beta.11",
     "vuepress": "^0.14.4"
   },
@@ -51,7 +53,10 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     },
     "collectCoverage": true,
-    "collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"],
+    "collectCoverageFrom": [
+      "**/*.{js,vue}",
+      "!**/node_modules/**"
+    ],
     "coverageDirectory": "./coverage/"
   }
 }
