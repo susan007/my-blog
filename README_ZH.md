@@ -1,6 +1,7 @@
 ## vuepress搭建个人博客
 
 [![Build Status](https://travis-ci.org/susan007/my-blog.svg?branch=master)](https://travis-ci.org/susan007/my-blog)
+[![codecov](https://codecov.io/gh/susan007/my-blog/branch/master/graph/badge.svg)](https://codecov.io/gh/susan007/my-blog)
 
 中文 | <a href="./README.md">English</a>
 
