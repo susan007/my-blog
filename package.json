@@ -8,8 +8,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "deploy": "bash deploy.sh",
-    "test": "jest"
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "@vue/test-utils": "^1.0.0-beta.13",
