@@ -122,7 +122,13 @@ module.exports = {
                         ['/SOURCE/获取页面源码', 'js获取当前页面源码的两种方式'],
                         ['/SOURCE/规范', '前端开发规范'],
                         ['/SOURCE/chimee', 'Html5播放器之Chimee初次接触'],
-                        ['/SOURCE/npm私服', 'Nexus3搭建npm私服']
+                        ['/SOURCE/npm私服', 'Nexus3搭建npm私服'],
+                        ['/SOURCE/jest', 'jest测试单文件组件'],
+                        ['/SOURCE/mock-server', '前端搭建简易mock-server'],
+                        ['/SOURCE/ui-frame', '【收集】前端UI框架收集'],
+                        ['/SOURCE/yargs配置vue多环境', 'vue多环境配置'],
+                        ['/SOURCE/优秀博客收集', '【收集】优秀博客收集'],
+                        ['/SOURCE/数据可视化框架', '【收集】数据可视化框架']
                     ]
                 },
             ],
