@@ -22,7 +22,7 @@ module.exports = {
                 link: '/WEB/'
             },
             {
-                text: '闲聊',
+                text: '冷门',
                 link: '/SOURCE/'
             },
             {
@@ -103,10 +103,9 @@ module.exports = {
             ],
             '/SOURCE/': [
                 {
-                    title: '杂谈',
+                    title: '',
                     collapsable: true,
                     children: [
-                        ['/SOURCE/句子迷', '***句子迷***'],
                         ['/SOURCE/数据可视化框架','数据可视化框架收集'],
                         ['/SOURCE/travis-ci','自动化构建工具'],
                         ['/SOURCE/node-oom','node编译内存溢出'],
@@ -130,7 +129,13 @@ module.exports = {
                         ['/SOURCE/优秀博客收集', '【收集】优秀博客收集'],
                         ['/SOURCE/数据可视化框架', '【收集】数据可视化框架']
                     ]
-                },
+                },{
+                title: '天马行空',
+                    collapsable: true,
+                    children: [
+                        ['/SOURCE/句子迷', '触动的语句']
+                    ]
+                }
             ],
             '/PERSONAL/': [
                 {
