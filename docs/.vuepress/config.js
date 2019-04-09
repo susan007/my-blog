@@ -103,7 +103,7 @@ module.exports = {
             ],
             '/SOURCE/': [
                 {
-                    title: '',
+                    title: '冷门技术',
                     collapsable: true,
                     children: [
                         ['/SOURCE/数据可视化框架','数据可视化框架收集'],
