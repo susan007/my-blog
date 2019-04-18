@@ -118,7 +118,7 @@
 
     .block-left {
         display: inline-block;
-        width: 60%;
+        width: 35%;
         text-align: center;
         height: 6rem;
         line-height: 6rem;
@@ -126,7 +126,7 @@
 
     .block-right {
         display: inline-block;
-        width: 35%;
+        width: 60%;
         text-align: left;
         height: 100%;
     }
@@ -142,8 +142,6 @@
     }
 
     .footer {
-        position: fixed;
-        bottom: 0;
         width: 100%;
         background-color: floralwhite;
         height: 5rem;
@@ -163,7 +161,7 @@
     }
 
     .content {
-        height: 600px;
+        height: 500px;
         text-align: center;
     }
 
@@ -176,7 +174,7 @@
         border-radius: 3px;
         color: #666666;
         opacity: 0.7;
-        margin: 1rem 1rem;
+        margin: 0rem 0.3rem;
         box-shadow: 0px 3px 5px #b0b0b0;
     }
 
