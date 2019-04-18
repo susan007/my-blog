@@ -156,7 +156,8 @@ module.exports = {
                     title: '在线工具',
                     collapsable: true,
                     children: [
-                        ['/PERSONAL/search', '小花搜索']
+                        ['/PERSONAL/search', '纯粹搜索'],
+                        ['/PERSONAL/boolgame', '恶魔圈']
                     ]
                 }
             ]
