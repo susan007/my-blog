@@ -151,6 +151,13 @@ module.exports = {
                     children: [
                         ['/PERSONAL/开源项目一', '开源项目'],
                     ]
+                },
+                {
+                    title: '在线工具',
+                    collapsable: true,
+                    children: [
+                        ['/PERSONAL/search', '小花搜索']
+                    ]
                 }
             ]
         }
