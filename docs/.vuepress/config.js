@@ -60,7 +60,8 @@ module.exports = {
                         ['/WEB/CSS/bilibili', '前端动画小记---bilibili ( ゜-゜)つロ客户下载小动画'],
                         ['/WEB/CSS/background-position为什么会出现负值？', 'background-position为什么会出现负值？'],
                         ['/WEB/CSS/svg日出', 'svg动画之日出'],
-                        ['/WEB/CSS/单位', '单位之px-em-rem']
+                        ['/WEB/CSS/单位', '单位之px-em-rem'],
+                        ['/WEB/CSS/loading_square', '一个loading动画']
                     ]
                 }, {
                     title: 'VUE',
