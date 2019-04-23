@@ -61,7 +61,8 @@ module.exports = {
                         ['/WEB/CSS/background-position为什么会出现负值？', 'background-position为什么会出现负值？'],
                         ['/WEB/CSS/svg日出', 'svg动画之日出'],
                         ['/WEB/CSS/单位', '单位之px-em-rem'],
-                        ['/WEB/CSS/loading_square', '一个loading动画']
+                        ['/WEB/CSS/loading_square', '一个loading动画'],
+                        ['/WEB/CSS/12px', '浏览器和12px']
                     ]
                 }, {
                     title: 'VUE',
