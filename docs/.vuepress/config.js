@@ -52,7 +52,8 @@ module.exports = {
                         ['/WEB/JS/json', 'js中的json'],
                         ['/WEB/JS/js练习1', 'js练习之对象'],
                         ['/WEB/JS/类型', 'javascript中判断变量类型'],
-                        ['/WEB/JS/立即执行函数', '立即执行函数']
+                        ['/WEB/JS/立即执行函数', '立即执行函数'],
+                        ['/WEB/JS/闭包', '闭包']
                     ]
                 }, {
                     title: 'CSS',
