@@ -40,10 +40,11 @@
             }
         },
         mounted() {
-            // import('./lib-that-access-window-on-import').then(module => {
-            //     // use code
-            // })
-            this.handleNumber()
+            import('element-ui').then(module => {
+                // use code
+                this.handleNumber()
+            })
+            // this.handleNumber()
         },
         methods: {
             handleNumber() {
