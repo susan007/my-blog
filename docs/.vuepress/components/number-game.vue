@@ -25,7 +25,7 @@
 
 <script>
     export default {
-        name: 'numbergame',
+        name: 'number-game',
         data() {
             return {
                 ruleForm: {
@@ -39,7 +39,10 @@
                 msgType: 'warning'
             }
         },
-        created() {
+        mounted() {
+            // import('./lib-that-access-window-on-import').then(module => {
+            //     // use code
+            // })
             this.handleNumber()
         },
         methods: {
