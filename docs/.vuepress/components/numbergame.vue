@@ -25,7 +25,7 @@
 
 <script>
     export default {
-        name: 'number_game',
+        name: 'numbergame',
         data() {
             return {
                 ruleForm: {
@@ -53,17 +53,17 @@
                         const answer = parseInt(this.ruleForm.answer)
                         if (answer > this.question) {
                             this.msgTitle = `你的答案是${answer}，猜大了！`
-                            this.msgType = 'warning'
+                            this.msgType = 'error'
                         } else if (answer < this.question) {
                             this.msgTitle = `你的答案是${answer}，猜小了！`
-                            this.msgType = 'warning'
+                            this.msgType = 'error'
                         } else if (answer === this.question) {
                             this.msgTitle = '你猜对了！再来一局吧'
                             this.msgType = 'success'
                             this.handleNumber()
                         } else {
                             this.msgTitle = '你猜的是什么玩意？'
-                            this.msgType = 'warning'
+                            this.msgType = 'error'
                         }
                     } else {
                         return false
