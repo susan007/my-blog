@@ -10,5 +10,5 @@ export default ({
   options,
   router
 }) => {
-  Vue.use(Element)
+  // Vue.use(Element)
 }
