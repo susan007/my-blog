@@ -142,30 +142,30 @@ module.exports = {
                     ]
                 }
             ],
-            // '/PERSONAL/': [
-            //     {
-            //         title: '个人介绍',
-            //         collapsable: true,
-            //         children: [
-            //             ['/PERSONAL/个人简介', '个人简介'],
-            //         ]
-            //     },
-            //     {
-            //         title: '开源项目',
-            //         collapsable: true,
-            //         children: [
-            //             ['/PERSONAL/开源项目一', '开源项目'],
-            //         ]
-            //     },
-            //     {
-            //         title: '在线工具',
-            //         collapsable: true,
-            //         children: [
-            //             ['/PERSONAL/search', '纯粹搜索'],
-            //             ['/PERSONAL/boolgame', '恶魔圈']
-            //         ]
-            //     }
-            // ]
+            '/PERSONAL/': [
+                {
+                    title: '个人介绍',
+                    collapsable: true,
+                    children: [
+                        ['/PERSONAL/个人简介', '个人简介'],
+                    ]
+                },
+                {
+                    title: '开源项目',
+                    collapsable: true,
+                    children: [
+                        ['/PERSONAL/开源项目一', '开源项目'],
+                    ]
+                },
+                {
+                    title: '在线工具',
+                    collapsable: true,
+                    children: [
+                        ['/PERSONAL/search', '纯粹搜索'],
+                        ['/PERSONAL/boolgame', '恶魔圈']
+                    ]
+                }
+            ]
         }
     }
 
