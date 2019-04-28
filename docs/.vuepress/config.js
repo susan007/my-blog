@@ -163,13 +163,11 @@ module.exports = {
                     collapsable: true,
                     children: [
                         ['/PERSONAL/search', '纯粹搜索'],
-                        ['/PERSONAL/boolgame', '恶魔圈'],
-                        ['/PERSONAL/猜数字', '猜数字'] // travis-ci无法build，很尴尬！
+                        ['/PERSONAL/boolgame', '恶魔圈']
+                        // ['/PERSONAL/猜数字', '猜数字'] // travis-ci无法build，很尴尬！
                     ]
                 }
             ]
         }
     }
-
 }
-
