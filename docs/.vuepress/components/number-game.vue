@@ -22,13 +22,11 @@
             <!--</el-form-item>-->
         <!--</el-form>-->
 
-        <form ref="ruleForm" style="margin-right: 25%;margin-left: 25%;width: 50%">
             <input class="minput" placeholder="请输入1~99之间数字" v-model="ruleForm.answer" />
 
             <div>
-                <button class="mbutton"  @click="submit('ruleForm')">提交猜想</button>
+                <button class="mbutton"  @click="submit()">提交猜想</button>
             </div>
-        </form>
         <!--form end-->
     </div>
 </template>
@@ -111,8 +109,7 @@
     }
 
     .tip{
-        padding: 20px 30px;
-        margin-bottom: 50px;
+        margin-bottom: 10px;
         width: 50%;
         margin-left: 25%;
         margin-right: 50%;
@@ -126,6 +123,7 @@
     }
 
     .mbutton{
+        margin-top: 10px;
         background: cornflowerblue;
         border: 1px solid limegreen;
         border-radius: 5px;
