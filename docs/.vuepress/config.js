@@ -55,7 +55,7 @@ module.exports = {
                         ['/WEB/JS/立即执行函数', '立即执行函数'],
                         ['/WEB/JS/闭包', '闭包'],
                         ['/WEB/JS/封闭执行', '【js经典面试题】setTimeout()和for循环'],
-                        // ['/WEB/JS/外部js文件执行顺序', 'js脚本调用策略']
+                        ['/WEB/JS/外部js文件执行顺序', '脚本调用策略']
                     ]
                 }, {
                     title: 'CSS',
@@ -163,7 +163,8 @@ module.exports = {
                     collapsable: true,
                     children: [
                         ['/PERSONAL/search', '纯粹搜索'],
-                        ['/PERSONAL/boolgame', '恶魔圈']
+                        ['/PERSONAL/boolgame', '恶魔圈'],
+                        ['/PERSONAL/猜数字', '猜数字']
                     ]
                 }
             ]
