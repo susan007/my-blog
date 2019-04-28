@@ -40,11 +40,7 @@
             }
         },
         mounted() {
-            import('element-ui').then(module => {
-                // use code
-                this.handleNumber()
-            })
-            // this.handleNumber()
+            this.handleNumber()
         },
         methods: {
             handleNumber() {
@@ -82,7 +78,6 @@
     .content{
         width: 100%;
         height: 100%;
-        padding-top: 200px;
         text-align: center;
         background-image: url("../public/bg_sweet.png");
     }
