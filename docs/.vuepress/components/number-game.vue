@@ -1,25 +1,25 @@
 <template>
     <div class="content">
-        <!--&lt;!&ndash;tip start&ndash;&gt;-->
-        <!--<el-alert-->
-                <!--:title="msgTitle"-->
-                <!--:type="msgType"-->
-                <!--show-icon-->
-                <!--class="tip">-->
-        <!--</el-alert>-->
-        <!--&lt;!&ndash;tip end&ndash;&gt;-->
+        <!--tip start-->
+        <el-alert
+                :title="msgTitle"
+                :type="msgType"
+                show-icon
+                class="tip">
+        </el-alert>
+        <!--tip end-->
 
-        <!--&lt;!&ndash;form start&ndash;&gt;-->
-        <!--<el-form :model="ruleForm" :rules="rules" ref="ruleForm" style="margin-right: 25%;margin-left: 25%;width: 50%">-->
-            <!--<el-form-item prop="answer" required>-->
-                <!--<el-input size="small" placeholder="请输入1~99之间数字" v-model="ruleForm.answer" clearable></el-input>-->
-            <!--</el-form-item>-->
+        <!--form start-->
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" style="margin-right: 25%;margin-left: 25%;width: 50%">
+            <el-form-item prop="answer" required>
+                <el-input size="small" placeholder="请输入1~99之间数字" v-model="ruleForm.answer" clearable></el-input>
+            </el-form-item>
 
-            <!--<el-form-item>-->
-                <!--<el-button type="primary" @click="submitForm('ruleForm')">提交猜想</el-button>-->
-            <!--</el-form-item>-->
-        <!--</el-form>-->
-        <!--&lt;!&ndash;form end&ndash;&gt;-->
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">提交猜想</el-button>
+            </el-form-item>
+        </el-form>
+        <!--form end-->
     </div>
 </template>
 
@@ -28,15 +28,15 @@
         name: 'number-game',
         data() {
             return {
-                // ruleForm: {
-                //     answer: ''
-                // },
-                // rules: {
-                //     answer: { required: true, min: 1, max: 2, message: '输入1~99之间的数字', trigger: 'blur' }
-                // },
-                // question: null,
-                // msgTitle: '输入猜想，点击提交开始游戏！',
-                // msgType: 'warning'
+                ruleForm: {
+                    answer: ''
+                },
+                rules: {
+                    answer: { required: true, min: 1, max: 2, message: '输入1~99之间的数字', trigger: 'blur' }
+                },
+                question: null,
+                msgTitle: '输入猜想，点击提交开始游戏！',
+                msgType: 'warning'
             }
         },
         mounted() {
