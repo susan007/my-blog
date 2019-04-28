@@ -16,7 +16,7 @@
             </el-form-item>
 
             <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm')">提交猜想</el-button>
+                <!--<el-button type="primary" @click="submitForm('ruleForm')">提交猜想</el-button>-->
             </el-form-item>
         </el-form>
         <!--form end-->
@@ -40,7 +40,7 @@
             }
         },
         mounted() {
-            this.handleNumber()
+            // this.handleNumber()
         },
         methods: {
             handleNumber() {
