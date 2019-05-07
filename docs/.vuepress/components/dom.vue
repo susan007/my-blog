@@ -1,0 +1,233 @@
+<template>
+    <div class="container">
+        <header><h2>I am title</h2></header>
+        <div>I am the first div</div>
+        <div>I am the second div</div>
+        <p>I am the first p</p>
+        <p>I am the second p</p>
+        <div class="content" id="content">
+            Father
+            <div class="child" id="child">son</div>
+        </div>
+
+        <button id="querySelector">querySelector('div')</button>
+        <button id="querySelectorAll">querySelectorAll('p')</button>
+        <button id="createElement">createElement('ul')</button>
+        <button id="replaceChild">replaceChild(newChild, child)</button>
+        <button id="test">I will be removeEventListener</button>
+        <button id="removeEventListener">removeEventListener(test)</button>
+        <button id="cloneNode">cloneNode</button>
+        <button id="insertBefore">insertBefore</button>
+        <button id="removeChild">removeChild(child)</button>
+        <button id="createDocumentFragment">createDocumentFragment</button>
+        <button id="getComputedStyle">getComputedStyle</button>
+        <button id="setAttribute">setAttribute</button>
+        <button id="getAttribute" name="getAttribute">getAttribute</button>
+        <button id="removeAttribute" name="removeAttribute">removeAttribute</button>
+        <footer>I am footer</footer>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "dom",
+        mounted() {
+            this.init()
+        },
+        methods: {
+            init() {
+                /**
+                 * 返回第一个满足查询条件的元素
+                 */
+                document.getElementById('querySelector').onclick = function() {
+                    let dom = document.querySelector('div')
+                    dom.style.backgroundColor = 'red'
+                }
+
+                /**
+                 * 查询所有满足条件的元素
+                 */
+                document.getElementById('querySelectorAll').addEventListener('click', function () {
+                    let doms = document.querySelectorAll('p')
+                    for (let i=0; i<doms.length; i++) {
+                        doms[i].style.backgroundColor = 'orange'
+                    }
+                })
+
+                /**
+                 * 创建元素
+                 */
+                document.getElementById('createElement').addEventListener('click', function () {
+                    let ul = document.createElement('ul')
+                    for(let i=0; i<3; i++) {
+                        let li = document.createElement('li')
+                        li.style.backgroundColor = 'orange'
+                        li.innerText = `I am ${i}`
+                        ul.appendChild(li)
+                    }
+                    document.body.appendChild(ul)
+                })
+
+                /**
+                 * 移除子元素
+                 */
+                document.getElementById('removeChild').addEventListener('click', function () {
+                    // 只能是某个具体的node移除具体的子node 用getElementByClassName得到的是HTMLCollection
+                    let content = document.getElementById('content')
+                    console.log(content)
+                    let child = document.getElementById('child')
+                    if (child) {
+                        console.log(child)
+                        content.removeChild(child)
+                    }
+                })
+
+                /**
+                 * 替换元素
+                 */
+                document.getElementById('replaceChild').addEventListener('click', function () {
+                    let child = document.getElementById('child')
+                    let newChild = document.createElement('h2')
+                    let content = document.getElementById('content')
+                    newChild.textContent = 'new son'
+                    newChild.setAttribute('id', 'child')
+                    if (child) {
+                        content.replaceChild(newChild, child)
+                    } else {
+                        alert('child node have been removed')
+                    }
+                })
+
+                /**
+                 * 移除监听
+                 */
+                let listener = function () {
+                    alert('I will be removeEventListener, and you can try again!')
+                }
+                document.getElementById('test').addEventListener('click', listener)
+                document.getElementById('removeEventListener').addEventListener('click', function (e) {
+                    document.getElementById('test').removeEventListener('click', listener)
+                })
+
+                document.getElementById('cloneNode').addEventListener('click', function () {
+                    let child = document.getElementById('child')
+                    let copy
+                    let content = document.getElementById('content')
+                    if (child) {
+                        copy = child.cloneNode(true)
+                    } else {
+                        alert('child node have been removed')
+                    }
+                    content.appendChild(copy)
+                })
+
+                /**
+                 * 在某个元素之前插入元素
+                 */
+                document.getElementById('insertBefore').addEventListener('click', function () {
+                    let sister = document.createElement('div')
+                    sister.textContent = 'Sister'
+                    let father = document.getElementById('content')
+                    let son = document.getElementById('child')
+                    father.insertBefore(sister, son)
+                })
+
+                /**
+                 * 创建一个虚拟节点，可以将元素挂载在其下
+                 */
+                document.getElementById('createDocumentFragment').addEventListener('click', function () {
+                    let df = document.createDocumentFragment()
+                    let table = document.createElement('table')
+                    for (let i=0; i<3; i++) {
+                        let tr = document.createElement('tr')
+                        let td = document.createElement('td')
+                        td.textContent = `td ${i}`
+                        td.style.backgroundColor = 'red'
+                        td.style.color = 'white'
+                        tr.appendChild(td)
+                        df.appendChild(tr)
+                    }
+                    table.appendChild(df)
+                    document.body.appendChild(table)
+                })
+
+                /**
+                 * 获取应用在当前元素上的所有css属性
+                 */
+                document.getElementById('getComputedStyle').addEventListener('click', function () {
+                    // 获取当前元素使用的所有css属性
+                    let content = document.getElementById('content')
+                    console.log(window.getComputedStyle(content, null))
+                    alert(`color ${window.getComputedStyle(content).color}`)
+                    alert(window.getComputedStyle(content).backgroundColor)
+                })
+
+                /**
+                 * 给元素设置属性
+                 */
+                document.getElementById('setAttribute').addEventListener('click', function () {
+                    let button = document.getElementById('setAttribute')
+                    button.setAttribute('class', 'button')
+                })
+
+                /**
+                 * 获取某个属性的值
+                 */
+                document.getElementById('getAttribute').addEventListener('click', function () {
+                    let dom = document.getElementById('getAttribute')
+                    alert(dom.getAttribute('name'))
+                })
+
+                /**
+                 * 移除某个属性
+                 */
+                document.getElementById('removeAttribute').addEventListener('click', function () {
+                    let dom = document.getElementById('removeAttribute')
+                    alert(`Now, name= ${dom.getAttribute('name')} ! It will be removed!`)
+                    dom.removeAttribute('name')
+                    alert(`Now, name= ${dom.getAttribute('name')}`)
+                })
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    .container{
+        width: 100%;
+        height: 100%;
+    }
+
+    header, footer{
+        background-color: cornflowerblue;
+        text-align: center;
+    }
+
+    .child{
+        background-color: indianred;
+    }
+
+    .content{
+        background-color: darkseagreen;
+        padding: 2rem 2rem;
+    }
+
+    button{
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        margin-left: 10rem;
+    }
+
+    button{
+        background-color: cornflowerblue;
+        border-radius: 5px;
+        padding: 5px 5px;
+        color: white;
+    }
+
+    .button{
+        background-color: red;
+    }
+
+</style>

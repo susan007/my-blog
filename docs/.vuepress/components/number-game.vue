@@ -116,6 +116,7 @@
     }
 
     .minput{
+        height: 3rem;
         background: transparent;
         border: 1px solid limegreen;
         border-radius: 5px;
