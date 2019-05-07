@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>练习js Dom操作</title>
+    <title>js操作Dom的15个常用方法</title>
 
     <style>
         body, html, h2{
@@ -28,6 +28,17 @@
             display: block;
             margin-top: 1rem;
             margin-left: 10rem;
+        }
+
+        button{
+            background-color: cornflowerblue;
+            border-radius: 5px;
+            padding: 5px 5px;
+            color: white;
+        }
+
+        .button{
+            background-color: red;
         }
 
     </style>
@@ -56,6 +67,9 @@
 <button id="removeChild">removeChild(child)</button>
 <button id="createDocumentFragment">createDocumentFragment</button>
 <button id="getComputedStyle">getComputedStyle</button>
+<button id="setAttribute">setAttribute</button>
+<button id="getAttribute" name="getAttribute">getAttribute</button>
+<button id="removeAttribute" name="removeAttribute">removeAttribute</button>
 
 </body>
 
@@ -65,7 +79,7 @@
      */
     document.getElementById('querySelector').onclick = function() {
         let dom = document.querySelector('div')
-        dom.style.color = 'red'
+        dom.style.backgroundColor = 'red'
     }
 
     /**
@@ -74,7 +88,7 @@
     document.getElementById('querySelectorAll').addEventListener('click', function () {
         let doms = document.querySelectorAll('p')
         for (let i=0; i<doms.length; i++) {
-            doms[i].style.color = 'green'
+            doms[i].style.backgroundColor = 'orange'
         }
     })
 
@@ -85,7 +99,7 @@
         let ul = document.createElement('ul')
         for(let i=0; i<3; i++) {
             let li = document.createElement('li')
-            li.style.color = 'orange'
+            li.style.backgroundColor = 'orange'
             li.innerText = `I am ${i}`
             ul.appendChild(li)
         }
@@ -182,8 +196,34 @@
         // 获取当前元素使用的所有css属性
         let content = document.getElementById('content')
         console.log(window.getComputedStyle(content, null))
-        console.log(`color ${window.getComputedStyle(content).color}`)
-        console.log(window.getComputedStyle(content).backgroundColor)
+        alert(`color ${window.getComputedStyle(content).color}`)
+        alert(window.getComputedStyle(content).backgroundColor)
+    })
+
+    /**
+     * 给元素设置属性
+     */
+    document.getElementById('setAttribute').addEventListener('click', function () {
+        let button = document.getElementById('setAttribute')
+        button.setAttribute('class', 'button')
+    })
+
+    /**
+     * 获取某个属性的值
+     */
+    document.getElementById('getAttribute').addEventListener('click', function () {
+        let dom = document.getElementById('getAttribute')
+        alert(dom.getAttribute('name'))
+    })
+
+    /**
+     * 移除某个属性
+     */
+    document.getElementById('removeAttribute').addEventListener('click', function () {
+        let dom = document.getElementById('removeAttribute')
+        alert(`Now, name= ${dom.getAttribute('name')} ! It will be removed!`)
+        dom.removeAttribute('name')
+        alert(`Now, name= ${dom.getAttribute('name')}`)
     })
 
 </script>

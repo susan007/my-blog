@@ -56,7 +56,8 @@ module.exports = {
                         ['/WEB/JS/闭包', '闭包'],
                         ['/WEB/JS/封闭执行', '【js经典面试题】setTimeout()和for循环'],
                         ['/WEB/JS/外部js文件执行顺序', '脚本调用策略'],
-                        ['/WEB/JS/object', '创建对象的几种方式']
+                        ['/WEB/JS/object', '创建对象的几种方式'],
+                        ['/WEB/JS/dom', 'js操作Dom常用方法']
                     ]
                 }, {
                     title: 'CSS',
