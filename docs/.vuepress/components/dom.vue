@@ -2,7 +2,7 @@
     <div class="container">
         <header><h2>I am title</h2></header>
         <div class="div">I am the first div</div>
-        <div class="div">I am the second div</div>
+        <div class="div" id="div">I am the second div</div>
         <p class="p">I am the first p</p>
         <p class="p">I am the second p</p>
         <div class="content" id="content">
@@ -11,11 +11,11 @@
         </div>
 
         <button id="querySelector">querySelector</button>
-        <button id="querySelectorAll">querySelectorAll('p')</button>
-        <button id="createElement">createElement('ul')</button>
-        <button id="replaceChild">replaceChild(newChild, child)</button>
+        <button id="querySelectorAll">querySelectorAll</button>
+        <button id="createElement">createElement</button>
+        <button id="replaceChild">replaceChild</button>
         <button id="test">I will be removeEventListener</button>
-        <button id="removeEventListener">removeEventListener(test)</button>
+        <button id="removeEventListener">removeEventListener</button>
         <button id="cloneNode">cloneNode</button>
         <button id="insertBefore">insertBefore</button>
         <button id="removeChild">removeChild(child)</button>
@@ -65,7 +65,7 @@
                         li.innerText = `I am ${i}`
                         ul.appendChild(li)
                     }
-                    document.getElementsByClassName('container').appendChild(ul)
+                    document.getElementById('div').appendChild(ul)
                 })
 
                 /**
@@ -148,7 +148,7 @@
                         df.appendChild(tr)
                     }
                     table.appendChild(df)
-                    document.getElementsByClassName('container').appendChild(table)
+                    document.getElementById('div').appendChild(table)
                 })
 
                 /**
