@@ -1,16 +1,16 @@
 <template>
     <div class="container">
         <header><h2>I am title</h2></header>
-        <div>I am the first div</div>
-        <div>I am the second div</div>
-        <p>I am the first p</p>
-        <p>I am the second p</p>
+        <div class="div">I am the first div</div>
+        <div class="div">I am the second div</div>
+        <p class="p">I am the first p</p>
+        <p class="p">I am the second p</p>
         <div class="content" id="content">
             Father
             <div class="child" id="child">son</div>
         </div>
 
-        <button id="querySelector">querySelector('div')</button>
+        <button id="querySelector">querySelector</button>
         <button id="querySelectorAll">querySelectorAll('p')</button>
         <button id="createElement">createElement('ul')</button>
         <button id="replaceChild">replaceChild(newChild, child)</button>
@@ -40,7 +40,7 @@
                  * 返回第一个满足查询条件的元素
                  */
                 document.getElementById('querySelector').onclick = function() {
-                    let dom = document.querySelector('div')
+                    let dom = document.querySelector('.div')
                     dom.style.backgroundColor = 'red'
                 }
 
@@ -48,7 +48,7 @@
                  * 查询所有满足条件的元素
                  */
                 document.getElementById('querySelectorAll').addEventListener('click', function () {
-                    let doms = document.querySelectorAll('p')
+                    let doms = document.querySelectorAll('.p')
                     for (let i=0; i<doms.length; i++) {
                         doms[i].style.backgroundColor = 'orange'
                     }
@@ -65,7 +65,7 @@
                         li.innerText = `I am ${i}`
                         ul.appendChild(li)
                     }
-                    document.body.appendChild(ul)
+                    document.getElementsByClassName('container').appendChild(ul)
                 })
 
                 /**
@@ -148,7 +148,7 @@
                         df.appendChild(tr)
                     }
                     table.appendChild(df)
-                    document.body.appendChild(table)
+                    document.getElementsByClassName('container').appendChild(table)
                 })
 
                 /**
@@ -175,7 +175,7 @@
                  */
                 document.getElementById('getAttribute').addEventListener('click', function () {
                     let dom = document.getElementById('getAttribute')
-                    alert(dom.getAttribute('name'))
+                    alert(`name= ${dom.getAttribute('name')}`)
                 })
 
                 /**
@@ -194,6 +194,7 @@
 
 <style scoped>
     .container{
+        background-color: ivory;
         width: 100%;
         height: 100%;
     }
