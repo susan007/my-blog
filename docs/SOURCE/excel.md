@@ -40,11 +40,14 @@
 * 使用sheet_to_html生成html文件，提取table相关信息并展示，之后直接操作dom
 
 #### 真的很想倾听不同人的意见和讨论啊emmm...
+<a href="../../demo/xlsx.html">例子源码</a>
 
 ###### 相关资料
 
 <a href="https://aotu.io/notes/2016/04/07/node-excel/index.html">js-xlsx实践</a>
 
 <a href="https://github.com/SheetJS/js-xlsx">js-xlsx github</a>
+
+<a href="https://www.runoob.com/mongodb/mongodb-tutorial.html">mongoDB 菜鸟教程</a>
 
 

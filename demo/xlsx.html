@@ -3,14 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            background-color: ivory;
+        }
+
+        table, td, th {
+            border: 1px solid #1AAD19;
+        }
+
+        input, .file-btn{
+            padding: 0.5rem 0.5rem;
+            margin-bottom: 1rem;
+            margin-right: 1rem;
+            border-radius: 5px;
+            border: 1px solid #1AAD19;
+        }
+
+        .file-btn{
+            background-color: #1AAD19;
+            border: 1px solid #efefe2;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .file-btn:hover{
+            background-color: #2BA245;
+            border: 1px solid #efefe2;
+        }
+
+    </style>
 </head>
 <body>
 
-<input type="file"onchange="getExcel(this)" />
-<div id="demo"></div>
+<a class="file-btn" href="#">
+    请上传文件
+    <input type="file" onchange="getExcel(this)" style="opacity: 0" />
+</a>
+<input type="text" id="data-input">
+<div id="content"></div>
 
 </body>
-<script src="../../dist/xlsx.full.min.js"></script>
+<script src="js/xlsx.full.min.js"></script>
 <script>
     /*
     FileReader共有4种读取方法：
@@ -18,10 +54,10 @@
     2.readAsBinaryString(file)：将文件读取为二进制字符串
     3.readAsDataURL(file)：将文件读取为Data URL
     4.readAsText(file, [encoding])：将文件读取为文本，encoding缺省值为'UTF-8'
-                 */
-    var wb; // 读取完成的数据
-    var rABS = false; // 是否将文件读取为二进制字符串
-
+    */
+    var wb // 读取完成的数据
+    var rABS = false // 是否将文件读取为二进制字符串
+    var table = ''
     function getExcel(obj) { //导入
         if(!obj.files) {
             return;
@@ -31,7 +67,7 @@
         reader.onload = function(e) {
             var data = e.target.result;
             if(rABS) {
-                wb = XLSX.read(btoa(fixdata(data)), {//手动转化
+                wb = XLSX.read(btoa(fixdata(data)), { // 手动转化
                     type: 'base64'
                 });
             } else {
@@ -39,21 +75,49 @@
                     type: 'binary'
                 });
             }
-            //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
-            //wb.Sheets[Sheet名]获取第一个Sheet的数据
-            // 将Excel转化为json，但这适用于简单的表格，对于合并单元格还不知道该怎么处理？
+            /* generate json! 但这适用于简单的表格，对于合并单元格还不知道该怎么处理？*/
             // document.getElementById("demo").innerHTML= JSON.stringify( XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]) );
 
-            /* 直接读取Excel为generate HTML */
-            console.log(XLSX.utils.sheet_to_html(wb.Sheets[wb.SheetNames[0]], {id: "data-table", editable:true}))
-            document.getElementById("demo").innerHTML = XLSX.utils.sheet_to_html(wb.Sheets[wb.SheetNames[0]], {id: "data-table", editable:true})
-        };
+            // generate HTML！wb.SheetNames[0]是获取Sheets中第一个Sheet的名字；wb.Sheets[Sheet名]获取第一个Sheet的数据
+            table = XLSX.utils.sheet_to_html(wb.Sheets[wb.SheetNames[0]], {id: "data-table", editable:true})
+            document.getElementById('content').innerHTML = table
+        }
+
         if(rABS) {
-            reader.readAsArrayBuffer(f);
+            reader.readAsArrayBuffer(f)
         } else {
-            reader.readAsBinaryString(f);
+            reader.readAsBinaryString(f)
         }
     }
+    // 输入框事件
+    document.getElementById('data-input').addEventListener('change', function (e) {
+        console.log(e.target.value)
+        // 根据筛选条件查找机型
+        const tdNodelist = document.getElementById('data-table').querySelectorAll('tr td')
+        // 将nodeList转化为Array
+        const tdNodelistToArray = Array.apply(null, tdNodelist)
+        // 查询符合条件的项，这里以型号作为筛选条件，这里只返回找到的第一个符合条件的，应该使用filter找出所有符合条件的项！
+        const result = tdNodelistToArray.find(td => {
+            // 输入查找条件
+            return td.innerText === e.target.value
+        })
+        // 处理结果
+        if (result) {
+            const id = result.getAttribute('id')
+            const resultArr = tdNodelistToArray.filter(node => {
+                return node.getAttribute('id').startsWith(id.slice(0, 5))
+            })
+            // 统一处理结果
+            resultArr.forEach(result => {
+                result.style.backgroundColor = '#1AAD19'
+                result.style.color = 'white'
+                console.log(result)
+            })
+        } else {
+            alert('查无此类型！')
+        }
+    })
+
 </script>
 </html>
 
