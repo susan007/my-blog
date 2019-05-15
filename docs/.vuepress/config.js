@@ -87,7 +87,8 @@ module.exports = {
                         ['/WEB/VUE/vue使用第三方库', 'vue中使用第三方库的几种方式'],
                         ['/WEB/VUE/插件', 'vue插件编写'],
                         ['/WEB/VUE/插槽', 'vue插槽使用'],
-                        ['/WEB/VUE/传值', 'vue组件间通讯']
+                        ['/WEB/VUE/传值', 'vue组件间通讯'],
+                        ['/WEB/VUE/filter', 'vue过滤器']
                     ]
                 }, {
                     title: 'HTTP',
