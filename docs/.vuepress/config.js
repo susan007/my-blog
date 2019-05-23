@@ -94,7 +94,9 @@ module.exports = {
                     title: 'HTTP',
                     collapsable: true,
                     children: [
-                        ['/WEB/HTTP/httpCode','http-status-code 必知必会']
+                        ['/WEB/HTTP/httpCode','http-status-code 必知必会'],
+                        ['/WEB/HTTP/https', 'HTTPS建立SSL机制'],
+                        ['/WEB/HTTP/http_api', 'Http Api Design Guide']
                     ]
                 },{
                 title: 'ES6',
