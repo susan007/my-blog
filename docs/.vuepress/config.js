@@ -139,7 +139,9 @@ module.exports = {
                         ['/SOURCE/excel', '项目调研'],
                         ['/SOURCE/api', 'API设计规范'],
                         ['/SOURCE/微前端', '微前端概念'],
-                        ['/SOURCE/mongodb', 'mongoDB学习']
+                        ['/SOURCE/mongodb', 'mongoDB学习'],
+                        ['/SOURCE/mermarid', 'mermaid流程图绘制'],
+                        ['/SOURCE/notion', 'notion笔记工具']
                     ]
                 },{
                 title: '天马行空',
