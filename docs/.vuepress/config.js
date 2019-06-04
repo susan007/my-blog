@@ -143,7 +143,8 @@ module.exports = {
                         ['/SOURCE/微前端', '微前端概念'],
                         ['/SOURCE/mongodb', 'mongoDB学习'],
                         ['/SOURCE/mermarid', 'mermaid流程图绘制'],
-                        ['/SOURCE/notion', 'notion笔记工具']
+                        ['/SOURCE/notion', 'notion笔记工具'],
+                        ['/SOURCE/小程序', '我与小程序二三事']
                     ]
                 },{
                 title: '天马行空',

@@ -20,3 +20,6 @@ graph TD
 
 ### 相关资料
 [官方API](https://mermaidjs.github.io/mermaidAPI.html)
+
+### 其他
+有一个flowChart.js也可以用在markdown中绘制流程图，非常方便。
