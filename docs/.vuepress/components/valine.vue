@@ -47,7 +47,7 @@
                     el: '#vcomments',
                     appId: APP_ID,// your appId
                     appKey: APP_KEY, // your appKey
-                    notify: false,
+                    notify: true, // 邮件提醒
                     verify: false,
                     path: path,
                     visitor: true,
