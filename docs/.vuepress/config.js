@@ -58,7 +58,8 @@ module.exports = {
                         ['/WEB/JS/外部js文件执行顺序', '脚本调用策略'],
                         ['/WEB/JS/object', '创建对象的几种方式'],
                         ['/WEB/JS/dom', 'js操作Dom常用方法'],
-                        ['/WEB/JS/function', '函数']
+                        ['/WEB/JS/function', '函数'],
+                        ['/WEB/JS/get_and_set', 'javascript中控制对象属性访问']
                     ]
                 }, {
                     title: 'CSS',
