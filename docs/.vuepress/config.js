@@ -59,7 +59,8 @@ module.exports = {
                         ['/WEB/JS/object', '创建对象的几种方式'],
                         ['/WEB/JS/dom', 'js操作Dom常用方法'],
                         ['/WEB/JS/function', '函数'],
-                        ['/WEB/JS/get_and_set', 'javascript中控制对象属性访问']
+                        ['/WEB/JS/get_and_set', 'javascript中控制对象属性访问'],
+                        ['/WEB/JS/dispatch', 'Dom自定义事件']
                     ]
                 }, {
                     title: 'CSS',
