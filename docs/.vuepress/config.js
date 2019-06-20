@@ -150,10 +150,11 @@ module.exports = {
                         ['/SOURCE/小程序', '我与小程序二三事']
                     ]
                 },{
-                title: '天马行空',
+                title: '望穿秋水',
                     collapsable: true,
                     children: [
-                        ['/SOURCE/句子迷', '触动的语句']
+                        ['/SOURCE/句子迷', '触动的语句'],
+                        ['/SOURCE/MS记录', '面试真题']
                     ]
                 }
             ],
