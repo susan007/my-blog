@@ -137,7 +137,7 @@ module.exports = {
                         ['/SOURCE/require', 'Unresolved function or method require()'],
                         ['/SOURCE/node-oom','node编译内存溢出'],
                         ['/SOURCE/vuepress注意', 'vuepress中的坑'],
-                        ['/SOURCE/nginx_error', 'nginx无法启动'],
+                        ['/SOURCE/nginx_error', 'nginx实践'],
                         ['/SOURCE/puzzlers学习', 'puzzlers学习'],
                         ['/SOURCE/ui-frame', '前端UI框架收集'],
                         ['/SOURCE/优秀博客收集', '优秀博客收集'],
