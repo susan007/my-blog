@@ -71,7 +71,8 @@ module.exports = {
                         ['/WEB/CSS/svg日出', 'svg动画之日出'],
                         ['/WEB/CSS/单位', '单位之px-em-rem'],
                         ['/WEB/CSS/loading_square', '一个loading动画'],
-                        ['/WEB/CSS/12px', '浏览器和12px']
+                        ['/WEB/CSS/12px', '浏览器和12px'],
+                        ['/WEB/CSS/响应式网页', '《响应式网页设计》读书笔记']
                     ]
                 }, {
                     title: 'VUE',

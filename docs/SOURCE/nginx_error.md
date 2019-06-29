@@ -71,17 +71,28 @@ http {
 #### 反代理示例
 ```js
  # 反向代理
-    server{
-        listen 8002;
-        server_name blog.susan007.com;
-        location / {
-            proxy_pass https://susan007.github.io;
-        }
+server{
+    listen 80;
+    server_name susan007.com
+    location / {
+        proxy_pass https://susan007.github.io; # 要访问susan007.com，将其反向代理到susan007.github.io
     }
+}
 ```
 #### 负载均衡示例
-```js
-
+```js 
+http{
+upstream backend { 
+    server 10.1.1.1:6001 weight=1;
+    server 10.1.1.1:6002 weight=1;
+    server 10.1.1.2:6003 weight=2; # 性能好就做得多一些
+}
+server {
+  location / {
+    proxy_pass https://backend;
+  }
+}
+}
 ```
 
 ### 常见错误
@@ -99,3 +110,5 @@ netstat -aon | findstr :80
 tasklist|findstr "4300"
 // 关掉对应的服务
 ```
+
+###### [nginx官方文档](https://docs.nginx.com/nginx/admin-guide/)

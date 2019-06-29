@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>语义化布局</title>
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            background-color: cornsilk;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            padding: 0 0;
+            color: white;
+            font-family: 'Bad Script', cursive;
+            font-size: large;
+            overflow: hidden;
+        }
+
+        header, footer {
+            background-color: cornflowerblue;
+            width: 100%;
+            height: 5%;
+            clear: both;
+            text-align: center;
+        }
+
+        aside {
+            float: left;
+            width: 5%;
+            background-color: pink;
+        }
+
+        main {
+            width: 80%;
+            background-color: coral;
+            float: left;
+        }
+
+        details {
+            width: 15%;
+            background-color: hotpink;
+            float: left;
+        }
+
+        aside, main, details {
+            height: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word; /*自动换行*/
+            /*white-space: nowrap;*/ /*单行*/
+        }
+
+        #aside-menu li:hover {
+            background-color: lightpink;
+        }
+
+        #aside-menu li::before {
+            content: "❤";
+        }
+
+        #aside-menu li::after{
+            content: "▼";
+        }
+
+        #aside-menu li {
+            border-bottom: 1px solid #efefef;
+            height: 20%;
+            list-style: none;
+            text-align: left;
+            padding-left: 0.2rem;
+            vertical-align: middle;
+        }
+
+        #aside-menu li:last-child {
+            border-bottom: none;
+        }
+
+        #aside-menu {
+            height: 100%;
+            padding: 0 0;
+            margin: 0 0;
+        }
+
+        /*一般放在最后*/
+        @media screen and (max-width: 750px) {
+            aside {
+                width: 20%;
+                height: 70%;
+            }
+
+            main {
+                width: 80%;
+                height: 70%;
+            }
+
+            details {
+                width: 100%;
+                height: 20%;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>header</header>
+<aside>
+    <ul id="aside-menu">
+        <li>小程序</li>
+        <li>PC端</li>
+        <li>Android</li>
+        <li>Ios</li>
+        <li>H5</li>
+    </ul>
+</aside>
+<main>
+    I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the
+    history of our nation.
+    Five score years ago, a great American, in whose symbolic shadow we stand today, signed the Emancipation
+    Proclamation. This momentous decree came as a great beacon light of hope to millions of Negro slaves, who had been
+    seared in the flames of withering injustice. It came as a joyous daybreak to end the long night of their captivity.
+    But one hundred years later, the Negro still is not free. One hundred years later, the life of the Negro is still
+    sadly crippled by the manacles of segregation and the chains of discrimination. One hundred years later, the Negro
+    lives on a lonely island of poverty in the midst of a vast ocean of material prosperity. One hundred years later,
+    the Negro is still languished in the corners of American society and finds himself an exile in his own land. And so
+    we've come here today to dramatize a shameful condition.
+</main>
+<details>
+    We have also come to this hallowed spot to remind America of the fierce urgency of Now. This is no time to engage in
+    the luxury of cooling off or to take the tranquilizing drug of gradualism. Now is the time to make real the promises
+    of democracy. Now is the time to rise from the dark and desolate valley of segregation to the sunlit path of racial
+    justice. Now is the time to lift our nation from the quicksands of racial injustice to the solid rock of
+    brotherhood. Now is the time to make justice a reality for all of God's children.
+</details>
+<footer>footer</footer>
+
+<script>
+    document.getElementById('aside-menu').addEventListener('click', function (e) {
+        if(e.target && e.target.nodeName.toLowerCase() === 'li') {
+            alert(e.target.innerText)
+        }
+    })
+</script>
+</body>
+</html>
