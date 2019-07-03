@@ -8,6 +8,48 @@
 <body>
 
 <script>
+    // fetch header
+    let mheader = new Headers({
+        'Content-Type': 'application/json',
+        'Cache-Type': 'no-cache'
+    })
+
+    function post(url, data) {
+        return fetch(url, {
+            method: 'POST',
+            headers: mheader,
+            body: JSON.stringify(data),
+            mode: 'cors'
+        }).then(function (response) {
+            return response.json()
+        })
+    }
+
+    function get(url){
+        return fetch(url, {
+            method: 'GET',
+            headers: mheader,
+            mode: 'cors'
+        }).then(function (response) {
+            console.log(response.json())
+            return response.json()
+        })
+    }
+
+    post('https://www.washer.gree.com/login', {
+        userName: 'susan',
+        userPassword: '123456'
+    }).then(function (response) {
+        console.log(response)
+    }).catch(function (error) {
+        console.log(error)
+    })
+
+    get('./assets/data.json').then(function (response) {
+        console.log(response)
+    }).catch(function (error) {
+        console.log(error)
+    })
 
 </script>
 </body>

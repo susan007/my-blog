@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ajax</title>
+
+    <style>
+        p{
+            background-color: #10a568;
+            color: white;
+            padding: 0.2rem 0.2rem;
+        }
+    </style>
+</head>
+<body>
+
+<button id="submit">get xml file</button>
+<button id="png">get png file</button>
+
+<p id="response"></p>
+
+<script>
+    'use strict'
+
+    function submit(method, url){
+        let httpRaeuest
+        if(window.XMLHttpRequest){
+            httpRaeuest = new XMLHttpRequest()
+        }else if(window.ActiveXObject){
+            httpRaeuest = new ActiveXObject()
+        }
+
+        // 事件监听 添加在open之前
+        httpRaeuest.addEventListener('progress', updateProgress, true)
+        httpRaeuest.addEventListener('loadend', loadend, true)
+        httpRaeuest.onreadystatechange = change
+        httpRaeuest.open(method, url, true)
+        // httpRaeuest.responseType = 'arraybuffer' // 字节的形式读取数据
+        // header添加在open之后
+        httpRaeuest.setRequestHeader('Content-Type', 'application/xml')
+        // 不加这句缓存 则每次请求会从缓存中读取 导致请求终止数据不变
+        httpRaeuest.setRequestHeader('Cache-Control', 'no-cache')
+        httpRaeuest.send({userName: 'susan', userPassword: 110})
+
+        // 请求进度计算 事件监听
+        function updateProgress(event) {
+            if(event.lengthComputable){
+                let precent = event.loaded / event.total
+                console.log('>>>' + precent)
+            }
+        }
+
+        function loadend(event) {
+            console.log(event)
+        }
+
+        function change() {
+            if(httpRaeuest.readyState === XMLHttpRequest.DONE && httpRaeuest.status === 200){
+                resolve(httpRaeuest.responseText)
+            }else{
+                reject(httpRaeuest.readyState)
+            }
+        }
+
+        function resolve(res) {
+            console.log(res)
+            document.getElementById('response').innerText = res
+        }
+
+        function reject(status) {
+            document.getElementById('response').innerText = status
+        }
+    }
+
+    document.getElementById('submit').addEventListener('click', function () {
+        submit('GET', './assets/data.xml')
+    })
+
+    document.getElementById('png').addEventListener('click', function () {
+        submit('GET', './assets/icon.png')
+    })
+</script>
+</body>
+</html>
