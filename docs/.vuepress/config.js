@@ -60,7 +60,8 @@ module.exports = {
                         ['/WEB/JS/dom', 'js操作Dom常用方法'],
                         ['/WEB/JS/function', '函数'],
                         ['/WEB/JS/get_and_set', 'javascript中控制对象属性访问'],
-                        ['/WEB/JS/dispatch', 'Dom自定义事件']
+                        ['/WEB/JS/dispatch', 'Dom自定义事件'],
+                        ['/WEB/JS/fetch-ajax-axios', 'ajax fetch axios']
                     ]
                 }, {
                     title: 'CSS',
