@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, html{
+            color: white;
+        }
+
+        ul li{
+            list-style: none;
+            padding: 1rem 1rem;
+            background-color: cornflowerblue;
+            border-bottom: 1px solid #efefe2;
+        }
+    </style>
+</head>
+<body>
+
+<div id="outer" style="background-color: indianred;padding: 1rem 1rem">
+    我是div
+    <button id="inner" style="background-color: #10a568;color: white">我是button</button>
+</div>
+
+<ul id="myUl" style="background-color: coral">
+    <li>包青龙</li>
+    <li>包拯</li>
+    <li>杨过</li>
+</ul>
+
+</body>
+<script>
+    document.getElementById('inner').addEventListener('click', function(e) {
+        console.log('inner')
+        alert('inner')
+    }, true)
+
+    document.getElementById('outer').addEventListener('click', function(e) {
+        console.log('outer')
+        alert('outer')
+    }, true)
+
+    document.getElementById('myUl').addEventListener('click', function(e) {
+        if(e.target.tagName === 'LI') {
+            alert(e.target.innerText)
+        }
+    })
+</script>
+</html>

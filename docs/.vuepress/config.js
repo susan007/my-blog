@@ -62,7 +62,8 @@ module.exports = {
                         ['/WEB/JS/get_and_set', 'javascript中控制对象属性访问'],
                         ['/WEB/JS/dispatch', 'Dom自定义事件'],
                         ['/WEB/JS/fetch-ajax-axios', 'ajax fetch axios'],
-                        ['/WEB/JS/model', 'js模块化']
+                        ['/WEB/JS/model', 'js模块化'],
+                        ['/WEB/JS/事件冒泡', '事件冒泡和捕获']
                     ]
                 }, {
                     title: 'CSS',
