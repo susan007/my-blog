@@ -6,12 +6,12 @@
 * 用来获取资源（包括网络资源）
 * 原生，规范，标准
 * [XMLHttpRequest文档](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)
-* [示例代码](../../../demo/ajax.html)
+* [示例代码](https://github.com/susan007/my-blog/blob/master/demo/ajax.html)
 #### fetch
 * 用来获取资源
 * 原生，规范，标准
 * 基于Promise
-* [示例代码](../../../demo/fetch.html)
+* [示例代码](https://github.com/susan007/my-blog/blob/master/demo/fetch.html)
 #### ajax
 * 指网页开发技术的综合，包含XMLHttpRequest/xml/javascript/html等
 * [Ajax-维基百科](https://zh.wikipedia.org/wiki/AJAX)

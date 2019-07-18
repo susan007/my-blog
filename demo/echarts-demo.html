@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>柱状图</h3>
+<div id="map" style="width: 800px;height: 800px"></div>
+<div id="shanxi1" style="width: 800px;height: 800px"></div>
+<div id="main" style="width: 800px;height: 800px"></div>
+</body>
+<script src="./lib/echarts.js"></script>
+<script src="./lib/china.js"></script>
+<script>
+    /**
+     * 异步请求
+     * @param url
+     * @return {Promise<Response | never>}
+     */
+    function getSource(url){
+        return fetch(url, {
+            method: 'GET'
+        }).then(res => res.json())
+    }
+
+    /**
+     * 获取10以内的随机数
+     * @return {number}
+     */
+    function getRandom() {
+        return Math.round(Math.random() * 10)
+    }
+
+    /**
+     * 1、引入china.json
+     * 2、json数据可以去github上echarts的官方工程中找
+     * 3、注册map，算是对map的一种扩展
+     * @type {*|void}
+     */
+    let map = echarts.init(document.getElementById('map'))
+    map.showLoading()
+    getSource('../assets/china.json').then(response => {
+        console.log(response)
+        map.hideLoading()
+        echarts.registerMap('cn', response);
+        let option = {
+            visualMap: {
+                min: 0,
+                max: 10,
+                text: ['多', '少'],
+                calculable: true,
+                inRange: {
+                    color: [
+                        "yellow",
+                        "#479fd2",
+                        "#ff6f5b"],
+                    symbolSize: [3, 10]
+                },
+                controller: {
+                    inRange: {
+                        color: [
+                            "yellow",
+                            "#479fd2",
+                            "#ff6f5b"],
+                        symbolSize: [10, 10]
+                    }
+                }
+            },
+            series: {
+                name: '中国地图',
+                type: 'map',
+                map: 'cn',
+                itemStyle: {
+                    normal: {
+                        label: {show: true},
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0, color: 'red' // 0% 处的颜色
+                            }, {
+                                offset: 1, color: 'blue' // 100% 处的颜色
+                            }],
+                            global: false // 缺省为 false
+                        }
+                        },
+                    emphasis: {label: {show: true}}
+                },
+                data: [
+                    {name: '北京',value: Math.round(Math.random()*10)},
+                    {name: '天津',value: Math.round(Math.random()*10)},
+                    {name: '上海',value: Math.round(Math.random()*10)},
+                    {name: '重庆',value: Math.round(Math.random()*10)},
+                    {name: '河北',value: Math.round(Math.random()*10)},
+                    {name: '河南',value: Math.round(Math.random()*10)},
+                    {name: '云南',value: Math.round(Math.random()*10)},
+                    {name: '辽宁',value: Math.round(Math.random()*10)},
+                    {name: '黑龙江',value: Math.round(Math.random()*10)},
+                    {name: '湖南',value: Math.round(Math.random()*10)},
+                    {name: '安徽',value: Math.round(Math.random()*10)},
+                    {name: '山东',value: Math.round(Math.random()*10)},
+                    {name: '新疆',value: Math.round(Math.random()*10)},
+                    {name: '江苏',value: Math.round(Math.random()*10)},
+                    {name: '浙江',value: Math.round(Math.random()*10)},
+                    {name: '江西',value: Math.round(Math.random()*10)},
+                    {name: '湖北',value: Math.round(Math.random()*10)},
+                    {name: '广西',value: Math.round(Math.random()*10)},
+                    {name: '甘肃',value: Math.round(Math.random()*10)},
+                    {name: '山西',value: Math.round(Math.random()*10)},
+                    {name: '内蒙古',value: Math.round(Math.random()*10)},
+                    {name: '陕西',value: Math.round(Math.random()*10)},
+                    {name: '吉林',value: Math.round(Math.random()*10)},
+                    {name: '福建',value: Math.round(Math.random()*10)},
+                    {name: '贵州',value: Math.round(Math.random()*10)},
+                    {name: '广东',value: Math.round(Math.random()*10)},
+                    {name: '青海',value: Math.round(Math.random()*10)},
+                    {name: '西藏',value: Math.round(Math.random()*10)},
+                    {name: '四川',value: Math.round(Math.random()*10)},
+                    {name: '宁夏',value: Math.round(Math.random()*10)},
+                    {name: '海南',value: Math.round(Math.random()*10)},
+                    {name: '台湾',value: Math.round(Math.random()*10)},
+                    {name: '香港',value: Math.round(Math.random()*10)},
+                    {name: '澳门',value: Math.round(Math.random()*10)}
+                ]
+            }
+        }
+        map.setOption(option)
+    }).catch(error => {
+        console.log(error)
+    })
+
+    /**
+     * 1、同上，引入的是单独省份json数据
+     * @type {*|void}
+     */
+    let shanxi1 = echarts.init(document.getElementById('shanxi1'))
+    shanxi1.showLoading()
+    getSource('../assets/shanxi1.json').then(response => {
+        echarts.registerMap('shanxi1', response)
+        shanxi1.hideLoading()
+        let option = {
+            title: {
+                text: '陕西省行政地图',
+                subtext: '城市人口统计',
+                left: 'center'
+            },
+            visualMap: {
+                min: 0,
+                max: 10,
+                text: ['多', '少'],
+                calculable: true,
+                inRange: {
+                    color: ['#10a568', 'yellow', 'red'],
+                    symbolSize: [3, 10]
+                },
+                controller: {
+                    inRange: {
+                        color: ['#10a568', 'yellow', 'red'],
+                        symbolSize: [10, 10]
+                    }
+                }
+            },
+            series: {
+                name: '陕西行政地图',
+                type: 'map',
+                mapType: 'shanxi1',
+                itemStyle: {
+                    normal: {label: {show: true}},
+                    emphasis: {label: {show: true}}
+                },
+                data: [
+                    {name: '榆林市', value: getRandom()},
+                    {name: '延安市', value: getRandom()},
+                    {name: '铜川市', value: getRandom()},
+                    {name: '咸阳市', value: getRandom()},
+                    {name: '渭南市', value: getRandom()},
+                    {name: '西安市', value: getRandom()},
+                    {name: '宝鸡市', value: getRandom()},
+                    {name: '汉中市', value: getRandom()},
+                    {name: '安康市', value: getRandom()},
+                    {name: '商洛市', value: getRandom()}
+                ]
+            }
+        }
+        shanxi1.setOption(option)
+    })
+
+    /**
+     *1、第二种实现方式，引入china.js自动识别
+     * @type {*|void}
+     */
+    let chart = echarts.init(document.getElementById('main'))
+    let option = {
+        title: {
+            text: 'China MAP',
+            link: 'https://susan007.github.io',
+            textStyle: {
+                color: ['red'],
+                fontStyle: 'oblique',
+                fontWeight: 'bold',
+                fontSize: 18,
+                textBorderColor: '#10a568',
+                textShadowColor: 'green',
+                textShadowBlur: 5,
+                textShadowOffsetX: 3,
+                textShadowOffsetY: 3
+            },
+            padding: 5,
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left'
+        },
+        visualMap: [
+            {
+                min: 0,
+                max: 1000,
+                left: 'left',
+                top: 'bottom',
+                text: ['高', '低'],
+                calculable: true,
+                // 表示 目标系列 的视觉样式 和 visualMap-continuous 共有的视觉样式。
+                inRange: {
+                    color: ['green', 'yellow', 'red'],
+                    symbolSize: [60, 100]
+                },
+                // 表示 visualMap-continuous 本身的视觉样式，会覆盖共有的视觉样式。比如，symbolSize 覆盖成为 [30, 100]，而 color 不变。
+                controller: {
+                    inRange: {
+                        color: ['green', 'yellow', 'red'],
+                        symbolSize: [30, 100]
+                    }
+                }
+            }
+        ],
+        series: {
+            type: 'map',
+            name: 'PM2.5',
+            map: 'china',
+            roam: true,
+            data: [
+                {name: '北京', value: Math.round(Math.random() * 1000)},
+                {name: '天津', value: Math.round(Math.random() * 1000)},
+                {name: '上海', value: Math.round(Math.random() * 1000)},
+                {name: '重庆', value: Math.round(Math.random() * 1000)},
+                {name: '河北', value: Math.round(Math.random() * 1000)},
+                {name: '河南', value: Math.round(Math.random() * 1000)},
+                {name: '云南', value: Math.round(Math.random() * 1000)},
+                {name: '辽宁', value: Math.round(Math.random() * 1000)},
+                {name: '黑龙江', value: Math.round(Math.random() * 1000)},
+                {name: '湖南', value: Math.round(Math.random() * 1000)},
+                {name: '安徽', value: Math.round(Math.random() * 1000)},
+                {name: '山东', value: Math.round(Math.random() * 1000)},
+                {name: '新疆', value: Math.round(Math.random() * 1000)},
+                {name: '江苏', value: Math.round(Math.random() * 1000)},
+                {name: '浙江', value: Math.round(Math.random() * 1000)},
+                {name: '江西', value: Math.round(Math.random() * 1000)},
+                {name: '湖北', value: Math.round(Math.random() * 1000)},
+                {name: '广西', value: Math.round(Math.random() * 1000)},
+                {name: '甘肃', value: Math.round(Math.random() * 1000)},
+                {name: '山西', value: Math.round(Math.random() * 1000)},
+                {name: '内蒙古', value: Math.round(Math.random() * 1000)},
+                {name: '陕西', value: Math.round(Math.random() * 1000)},
+                {name: '吉林', value: Math.round(Math.random() * 1000)},
+                {name: '福建', value: Math.round(Math.random() * 1000)},
+                {name: '贵州', value: Math.round(Math.random() * 1000)},
+                {name: '广东', value: Math.round(Math.random() * 1000)},
+                {name: '青海', value: Math.round(Math.random() * 1000)},
+                {name: '西藏', value: Math.round(Math.random() * 1000)},
+                {name: '四川', value: Math.round(Math.random() * 1000)},
+                {name: '宁夏', value: Math.round(Math.random() * 1000)},
+                {name: '海南', value: Math.round(Math.random() * 1000)},
+                {name: '台湾', value: Math.round(Math.random() * 1000)},
+                {name: '香港', value: Math.round(Math.random() * 1000)},
+                {name: '澳门', value: Math.round(Math.random() * 1000)}]}
+    }
+    chart.setOption(option)
+</script>
+</html>
