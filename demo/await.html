@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+<h3>async await示例</h3>
+</body>
+<script>
+    /**
+     * get请求数据
+     * @param url 请求url
+     * @return {Promise<Response | never>} 请求应答
+     */
+    function get(url) {
+        return fetch(url, {
+            method: 'GET'
+        }).then(response => response.json())
+    }
+
+    /**
+     * 创建div
+     * @param innerText div内容
+     * @param backgroundColor div背景色
+     * @return {HTMLElement} div
+     */
+    function createDiv(innerText, backgroundColor){
+        let div = document.createElement('div')
+        div.innerText = innerText
+        div.style.backgroundColor = backgroundColor
+        div.style.color = 'white'
+        div.style.padding = '0.5rem 0.5rem'
+        return div
+    }
+
+    /**
+     * 创建异步任务
+     * @return {Promise<void>}
+     */
+    async function users() {
+        let id = null
+        // 获取用户信息，得到用户id
+        await get('./assets/data.json').then(response => {
+            id = response.id
+            document.body.appendChild(createDiv(`用户id：${id}`, 'orange'))
+        }).catch(error => {
+            console.log(error)
+        })
+        // 通过id获取用户详情
+        await get(`./assets/${id}/user.json`).then(response => {
+            document.body.appendChild(createDiv(`用户详情：${JSON.stringify(response)}`, '#10a568'))
+        })
+    }
+
+    users().then(() => {
+        document.body.appendChild(createDiv(`Promise: resolve`, '#b38bff'))
+    }).catch(() => {
+        document.body.appendChild(createDiv(`Promise: reject`, 'red'))
+    })
+
+</script>
+</html>
