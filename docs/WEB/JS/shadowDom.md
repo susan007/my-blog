@@ -1,6 +1,8 @@
 #### 原生web组件
 影子Dom指的是将html-css-js封装成一个独立的html组件，相当于自己封装html标签，直接在html中使用。
 
+当然除了shadow dom还有其他的方式实现web components，后续会补充进来。
+
 #### 注册shadow dom
 ```js
 class Dog extends HTMLElement {

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>async实例</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    /**
+     * 创建div
+     * @param innerText div内容
+     * @param backgroundColor div背景色
+     * @return {HTMLElement} div
+     */
+    function createDiv(innerText, backgroundColor){
+        let div = document.createElement('div')
+        div.innerText = innerText
+        div.style.backgroundColor = backgroundColor
+        div.style.color = 'white'
+        div.style.padding = '0.5rem 0.5rem'
+        return div
+    }
+
+    class HttpError extends Error {
+        constructor(response) {
+            super(`${response.status} for ${response.url}`)
+            this.name = 'HttpError'
+            this.response = response
+        }
+    }
+
+    /**
+     * 异步请求
+     * @param url
+     * @return {Promise<any>}
+     */
+    async function loadJson(url) {
+        const response = await fetch(url)
+        if (response.status === 200) {
+            const res = await response.json()
+            console.log(res)
+            document.body.appendChild(createDiv(JSON.stringify(res), '#10a568'))
+            return res
+        } else {
+            throw new HttpError(response)
+        }
+    }
+
+    /**
+     * 异步
+     * @return {Promise<void>}
+     */
+    async function demoGithubUser() {
+        let user;
+        while (true) {
+            let name = window.prompt("Enter a name?", "iliakan");
+            try {
+                user = await loadJson(`https://api.github.com/users/${name}`);
+                console.log(user)
+                document.body.appendChild(createDiv(JSON.stringify(user), 'orange'))
+                break; // no error, exit loop
+            } catch (err) {
+                if (err instanceof HttpError && err.response.status == 404) {
+                    // loop continues after the alert
+                    alert("No such user, please reenter.");
+                } else {
+                    // unknown error, rethrow
+                    throw err;
+                }
+            }
+        }
+    }
+
+    demoGithubUser();
+</script>
+</html>
