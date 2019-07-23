@@ -65,6 +65,7 @@ module.exports = {
                         ['/WEB/JS/dispatch', 'Dom自定义事件'],
                         ['/WEB/JS/事件冒泡', '事件冒泡和捕获'],
                         ['/WEB/JS/shadowDom', 'shadow-dom'],
+                        ['/WEB/JS/mode', 'javascript执行模式'],
                         ['/WEB/JS/执行上下文', '执行上下文'],
                         ['/WEB/JS/this', 'this'],
                         ['/WEB/JS/节流防抖', '节流和防抖'],
