@@ -166,8 +166,8 @@ module.exports = {
                     collapsable: true,
                     children: [
                         ['/SOURCE/句子迷', '触动的语句'],
-                        ['/SOURCE/study', 'Koan学习库'],
-                        ['/SOURCE/MS记录', '面试真题']
+                        ['/SOURCE/study', 'Koan学习库']
+                      //['/SOURCE/MS记录', '面试真题']
                     ]
                 }
             ],
