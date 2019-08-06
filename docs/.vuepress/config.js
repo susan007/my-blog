@@ -104,6 +104,12 @@ module.exports = {
                         ['/WEB/VUE/filter', 'vue过滤器']
                     ]
                 }, {
+                    title: '小程序',
+                    collapsable: true,
+                    children: [
+                        ['/SOURCE/wx-key‘, '关于wx:key'],
+                    ]
+                }, {
                     title: 'HTTP',
                     collapsable: true,
                     children: [
