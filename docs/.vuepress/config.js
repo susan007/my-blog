@@ -104,12 +104,6 @@ module.exports = {
                         ['/WEB/VUE/filter', 'vue过滤器']
                     ]
                 }, {
-                    title: '小程序',
-                    collapsable: true,
-                    children: [
-                        ['/SOURCE/wx-key‘, '关于wx:key'],
-                    ]
-                }, {
                     title: 'HTTP',
                     collapsable: true,
                     children: [
@@ -128,6 +122,13 @@ module.exports = {
                         ['/WEB/ES6/Es6运行环境', 'Es6执行环境搭建'],
                         ['/WEB/ES6/集合','集合'],
                         ['/WEB/ES6/Promise', 'Promise使用']
+                    ]
+                }, {
+                title: '小程序',
+                    collapsable: true,
+                    children: [
+                        ['/SOURCE/wx-key', '小程序之wx:key'],
+                        ['/SOURCE/小程序', '我与小程序二三事']
                     ]
                 }
             ],
@@ -164,7 +165,6 @@ module.exports = {
                         ['/SOURCE/mongodb', 'mongoDB学习'],
                         ['/SOURCE/mermarid', 'mermaid流程图绘制'],
                         ['/SOURCE/notion', 'notion笔记工具'],
-                        ['/SOURCE/小程序', '我与小程序二三事'],
                         ['/SOURCE/时间戳', '时间戳']
                     ]
                 },{
