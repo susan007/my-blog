@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xss测试</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * 防止xss攻击，转义html
+     * tips: 应当尽量避免自己写转义库，而应当采用成熟的、业界通用的转义库
+     * @param str
+     * @return {void | string | *}
+     */
+    const escapeHTML = str =>
+        str.replace(
+            /[&<>'"]/g,
+            tag =>
+                ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+        )
+    console.log(escapeHTML('<script>alert("你好")>>>'))
+
+    const zy = function(str){
+        let obj = {
+            '&': '123;',
+            '<': '456;',
+            '>': '789;',
+            "'": '110;',
+            '"': '120;'
+        }
+        return str.replace(/[&<>'"]/g, function(item){
+            return (obj[item] || item)
+        })
+    }
+
+    console.log(zy('<script>alert("我不好")>>>'))
+</script>
+</html>
