@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>interface实现</title>
+</head>
+<body>
+<h1>interface模拟</h1>
+
+</body>
+<script>
+    /**
+     * 方法一：注释法
+     * 1、先在注释中定义接口
+     * 2、实现接口233333
+     **/
+    /*
+    interface Compare {
+        function add(x, y)
+        function reduce(x, y)
+    }
+    */
+    // 实现接口
+    let compareModel = function (id, method, action) {
+    }
+    compareModel.prototype.add = function (x, y) {
+        return x+y
+    }
+    compareModel.prototype.reduce = function (x, y) {
+        return x-y
+    }
+    // 使用
+    let cc = new compareModel()
+    console.log(cc.add(1,1))
+    console.log(cc.reduce(5,3))
+
+    /**
+     * 方法二：属性检查模仿接口实现
+     * 1、定义注释
+     * 2、检查属性
+     * 3、属于粗略的自主检查，你要没实现该实现的方法去造假它也没辙
+     */
+    /*
+    interface Interface1{
+        function add(x, y)
+        function reduce(x,y)
+    }
+
+    interface Interface2{
+        function mix(x, y)
+    }
+    */
+    // 实现，在此并没有实现接口中的那几个方法
+    let  model = function(id, method, action){
+        // 显式声明自己支持的接口
+        this.implementsInterfaces = ['Interface1', 'Interface2']
+    }
+    // 属性检查
+    function addForm(formInstance) {
+        if(!implements(formInstance, 'Interface1', 'Interface2')){
+            throw new Error("Object does not implement a required interface")
+        }else {
+            console.log('---检查完成---')
+        }
+    }
+    // 检查实现
+    function implements(object) {
+        for(let i=1; i<arguments.length; i++){
+            const interfaceName = arguments[i];
+            console.log('***>'+interfaceName)
+            let interfaceFound = false;
+            for(let j=0; j< object.implementsInterfaces.length; j++){
+                console.log('--->'+object.implementsInterfaces[j])
+                if(object.implementsInterfaces[j] === interfaceName){
+                    interfaceFound = true
+                    break
+                }
+                console.log(interfaceFound)
+                if(!interfaceFound){
+                    return false;
+                }
+            }
+        }
+        return true
+    }
+    // 应用
+    let myModel = new model()
+    addForm(myModel)
+
+    /**
+     * 鸭式，检查对象实现的方法！如果对象具有与接口定义的方法同名的所有方法，那么就可以认为它实现了这个接口！
+     */
+
+</script>
+</html>
