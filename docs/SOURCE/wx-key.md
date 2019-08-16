@@ -1,3 +1,6 @@
+此贴作为小程序采坑帖，记录小程序开发中遇到的采坑记录
+
+## `wx:key`
 学习小程序列表渲染的时候，涉及到几个属性`wx:for`、`wx:for-index`、`wx:for-item`、`wx:key`，前三个都非常好理解绑定要渲染的数组、指定数组当前下标的变量名、指定数组当前元素的变量名，今天重点讲讲较难理解的`wx:key`。
 
 ### [官方定义](https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/list.html#wx:key)
@@ -6,7 +9,7 @@
 
 乍一看有点难理解啊2333，那我们就动手做做看看列表渲染加和不加wx:key会出现什么？
 
-#### wx:key 警告
+### wx:key 警告
 
 js文件中的数据
 ```js
@@ -42,13 +45,67 @@ Now you can provide attr `wx:key` for a `wx:for` to improve performance.
 // 值为被循环对象的某个属性，且该属性值为字符串或数字
 wx:key="id"
 ```
-#### wx:key 作用
+### wx:key 作用
 
 列表中项目的位置会变化（比如排序），或者会插入新的项目（前后插入新项目），而此时要保持已有项目的特征和状态（比如input的输入值或者checkbox的勾选状态），就要使用wx:key来指定列表中项目的唯一标识符。
 
-#### wx:key 形式
+### wx:key 形式
 * 字符串或数字：item的某个property,且不能重复。（比如上例中的id）
 * 保留关键字`*this`，需要item是一个唯一的字符串或数字。
 
+## `cover-view`
+cover-view是小程序中的一个视图容器，可覆盖在原生组件上（map/video等组件层级很高，自己设置z-index不生效的，所以cover-view就出现了）。
+### [局限性](https://developers.weixin.qq.com/miniprogram/dev/component/cover-view.html)
+* cover-view容器只能包含cover-view/cover-image/button。（对，你没看错，就支持嵌套这几种控件2333）
+* 诸多bug，比如不支持嵌套其他组件（会直接被忽略），不支持设置border等样式。
+### 我妄想在map上覆盖一个input输入框怎么办？
+* 直接在map上写一个input，虽被忽略但是能获取焦点但是无法设置样式。
+* 写一个cover-view悬浮在input相同的位置，给cover-view设置样式，假装我是一个input。
+* input焦点有了、样式有了，假装完美，但是问题多多，慎用。
+* [参考代码](https://www.jianshu.com/p/6f8f13c613e7)
+
+## map
+微信小程序地图组件
+
+### 坑汇总
+* 写在map中的元素，视觉上是浮在map之上，实质上设置事件无效，因此建议写在cover-view中。
+
+## 自定义组件
+直接给子组件绑定事件不生效，需要设置事件触发并设置事件监听
+### 流程总结如下
+* `triggerEvent`：在组件中用来触发事件
+```js
+// 假如component名称为 my-component
+Component({
+  properties: {},
+  methods: {
+    onTap: function(){
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {
+          bubbles: false, // 是否事件冒泡（事件冒泡你懂得，不过真有这样的需求？）
+          composed: true, // 设置为true会触发组件内部的事件，也就是假如有一个自定义组件也定义了一个事件，那么这个事件也会被触发
+          capturePhase: true // 事件是否拥有捕获阶段
+      } // 触发事件的选项
+      this.triggerEvent('myevent', myEventDetail, myEventOption)
+    }
+  }
+})
+```
+* 给组件添加事件
+```js
+// 在my-component中添加事件
+<button bind:tap="onTap">点我点我</button>
+```
+* 页面中调用组件并绑定事件
+```js
+// 页面中引入组件
+<view>
+    <my-component bind:myevent="toDo"></my-component>
+</view>
+// 父亲中定义事件
+toDo: function(){
+    console.log('你造吗，我是你爸爸。')
+}
+```
 
 
