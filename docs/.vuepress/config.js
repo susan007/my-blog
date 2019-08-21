@@ -159,7 +159,7 @@ module.exports = {
                         ['/SOURCE/puzzlers学习', 'puzzlers学习'],
                         ['/SOURCE/ui-frame', '前端UI框架收集'],
                         ['/SOURCE/优秀博客收集', '优秀博客收集'],
-                        ['/SOURCE/数据可视化框架', '数据可视化框架收集'],
+                        ['/SOURCE/数据可视化框架', '大前端框架汇总'],
                         ['/SOURCE/excel', '项目调研'],
                         ['/SOURCE/api', 'API设计规范'],
                         ['/SOURCE/微前端', '微前端概念'],
