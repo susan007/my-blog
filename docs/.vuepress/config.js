@@ -124,18 +124,19 @@ module.exports = {
                         ['/WEB/ES6/集合','集合'],
                         ['/WEB/ES6/Promise', 'Promise使用']
                     ]
-                }, {
-                title: '小程序',
-                    collapsable: true,
-                    children: [
-                        ['/SOURCE/wx-key', '小程序之wx:key'],
-                        ['/SOURCE/小程序', '我与小程序二三事']
-                    ]
                 }
             ],
             '/SOURCE/': [
                 {
-                    title: '冷门技术',
+                    title: '小程序',
+                    collapsable: true,
+                    children: [
+                        ['/SOURCE/wx-key', '微信小程序采坑帖'],
+                        ['/SOURCE/小程序', '我与小程序二三事']
+                    ]
+                },
+                {
+                    title: '杂技',
                     collapsable: true,
                     children: [
                         ['/SOURCE/规范', '前端开发规范'],
