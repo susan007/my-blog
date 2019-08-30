@@ -79,14 +79,14 @@ cover-view是小程序中的一个视图容器，可覆盖在原生组件上（m
 Component({
   properties: {},
   methods: {
-    onTap: function(){
+    myEvent: function(){
       var myEventDetail = {} // detail对象，提供给事件监听函数
       var myEventOption = {
           bubbles: false, // 是否事件冒泡（事件冒泡你懂得，不过真有这样的需求？）
           composed: true, // 设置为true会触发组件内部的事件，也就是假如有一个自定义组件也定义了一个事件，那么这个事件也会被触发
           capturePhase: true // 事件是否拥有捕获阶段
       } // 触发事件的选项
-      this.triggerEvent('myevent', myEventDetail, myEventOption)
+      this.triggerEvent('myEvent', myEventDetail, myEventOption)
     }
   }
 })
@@ -94,13 +94,13 @@ Component({
 * 给组件添加事件
 ```js
 // 在my-component中添加事件
-<button bind:tap="onTap">点我点我</button>
+<button bind:tap="myEvent">点我点我</button>
 ```
 * 页面中调用组件并绑定事件
 ```js
 // 页面中引入组件
 <view>
-    <my-component bind:myevent="toDo"></my-component>
+    <my-component bind:myEvent="toDo"></my-component>
 </view>
 // 父亲中定义事件
 toDo: function(){
@@ -108,4 +108,22 @@ toDo: function(){
 }
 ```
 
+## 引入[weui.wxss](https://github.com/Tencent/weui-wxss)
+
+* 拷贝dist-style文件夹下的weui.wxss到小程序的最外层目录中
+* 在app.js中导入weui.wxss文件（@import './weui.wxss'）
+* 直接在page中使用weui.wxss的样式即可，具体可参考example文件夹的例子
+
+### 注意
+在Components中使用weui.wxss样式不生效，需要单独按需把样式文件拷贝进组件文件夹中
+
+### 其他UI库
+
+[小程序UI库](https://mina.wiki/eco/ui.html#weui-for-%E5%B0%8F%E7%A8%8B%E5%BA%8F)
+
+## 微信支付
+正在进行中还未验证
+
+* [小程序支付交互流程](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_4&index=3)
+* [预留参考文章](https://segmentfault.com/a/1190000007737052)
 
