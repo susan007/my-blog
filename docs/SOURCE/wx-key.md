@@ -108,6 +108,9 @@ toDo: function(){
 }
 ```
 
+## wx:for获取某个item的值
+* 可直接使用`data-`绑定属性获取，比如`data-info="{{item}}"`给每个元素添加值；直接在相应元素的事件`function(e)`中，通过e可以获取到整个item的值。
+
 ## 引入[weui.wxss](https://github.com/Tencent/weui-wxss)
 
 * 拷贝dist-style文件夹下的weui.wxss到小程序的最外层目录中
@@ -127,3 +130,8 @@ toDo: function(){
 * [小程序支付交互流程](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_4&index=3)
 * [预留参考文章](https://segmentfault.com/a/1190000007737052)
 
+
+## 登录
+
+微信小程序登录相关内容，持续更新。
+* [小程序登录流程记录](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)
