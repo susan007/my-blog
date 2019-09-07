@@ -136,7 +136,7 @@ module.exports = {
                     ]
                 },
                 {
-                    title: '杂技',
+                    title: '其他技术',
                     collapsable: true,
                     children: [
                         ['/SOURCE/规范', '前端开发规范'],
@@ -167,15 +167,16 @@ module.exports = {
                         ['/SOURCE/mongodb', 'mongoDB学习'],
                         ['/SOURCE/mermarid', 'mermaid流程图绘制'],
                         ['/SOURCE/notion', 'notion笔记工具'],
-                        ['/SOURCE/时间戳', '时间戳']
+                        ['/SOURCE/时间戳', '时间戳'],
+                        ['/SOURCE/area', 'element-ui省市区资源整理']
                     ]
                 },{
                 title: '望穿秋水',
                     collapsable: true,
                     children: [
                         ['/SOURCE/句子迷', '触动的语句'],
-                        ['/SOURCE/study', 'Koan学习库']
-                      //['/SOURCE/MS记录', '面试真题']
+                        ['/SOURCE/study', 'Koan学习库'],
+                        ['/SOURCE/MS记录', '面试题参考']
                     ]
                 }
             ],
