@@ -135,3 +135,89 @@ toDo: function(){
 
 微信小程序登录相关内容，持续更新。
 * [小程序登录流程记录](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)
+
+
+## [echarts使用](https://github.com/ecomfe/echarts-for-weixin)
+
+在微信小程序中使用图表插件，这里总结一下echarts的使用，另外还有其他图标库供选择[antv-f2小-程序示例](https://github.com/antvis/wx-f2)，我选择echarts是因为它是大厂出品且关注度相对较高更新维护较快，大家可多做尝试。
+
+### 引入echarts库
+* 直接下载[echarts](https://github.com/ecomfe/echarts-for-weixin)库，并拷贝ec-canvas文件夹到你的工程中。
+* 在第一步下载的工程中，pages文件夹为小程序使用示例，可多做参考。
+
+### 使用
+* 注册组件`"ec-canvas": "/ec-canvas/ec-canvas"`
+* wxml中使用组件`<ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ec}}" params="{{params}}"></ec-canvas>`
+* js文件中实例化图表，主要方法使用echarts中的initChart(canvas, width, height)方法。（强烈建议参考官方demo）
+* 至此，page中使用echarts已经结束了，图像可以正常展示出来。但我们的目标是做成组件，方便在任何页面引用，那就继续。
+
+### 封装组件
+* 传参：思考下哪些数据需要动态传入，将它们提取出来，比如饼图中，我的提取如下：
+```js
+// series中的data参数需要作为参数动态传入
+params: {
+    type: Array,
+    value: [{
+        value: 55,
+        name: '苹果'
+        }, {
+        value: 20,
+        name: '香蕉'
+        }, {
+        value: 10,
+        name: '橘子'
+        }]
+}
+```
+* 改写`initChart(canvas, width, height)`方法为`initChart(canvas, width, height, params)`，因为params参数势必要在initChart中使用。
+* 改写`ec-canvas.js`文件，加入params参数，并修改onInit方法，加入参数params，至此完成组件封装。
+```js
+// ec-canvas.js文件中加入参数
+properties: {
+    canvasId: {
+      type: String,
+      value: 'ec-canvas'
+    },
+
+    ec: {
+      type: Object
+    },
+    params: {
+      type: Object,
+      observer: function (newVal, oldVal) {
+        if (newVal.length == 0) {
+          return;
+        }
+        this.init();
+      }
+    }
+  }
+```
+
+```js
+// 加入参数this.data.params
+var query = wx.createSelectorQuery().in(this);
+      query.select('.ec-canvas').boundingClientRect(res => {
+        if (typeof callback === 'function') {
+          this.chart = callback(canvas, res.width, res.height);
+        }
+        else if (this.data.ec && typeof this.data.ec.onInit === 'function') {
+          this.chart = this.data.ec.onInit(canvas, res.width, res.height, this.data.params);
+        }
+        else {
+          this.triggerEvent('init', {
+            canvas: canvas,
+            width: res.width,
+            height: res.height
+          });
+        }
+      }).exec();
+```
+
+### 采坑和总结
+* 为什么改写源码？
+```html
+// 一开始没改写源码，而是在methods中对 initChart(canvas, width, height, params) 方法做了封装initPie，然后在wxml中使用bind:init="initPie"，
+然而生成的图表是静态的无交互的，点击无任何反应；而使用econInit
+
+```
