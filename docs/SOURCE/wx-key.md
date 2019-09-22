@@ -139,7 +139,9 @@ toDo: function(){
 
 ## [echarts使用](https://github.com/ecomfe/echarts-for-weixin)
 
-在微信小程序中使用图表插件，这里总结一下echarts的使用，另外还有其他图标库供选择[antv-f2小-程序示例](https://github.com/antvis/wx-f2)，我选择echarts是因为它是大厂出品且关注度相对较高更新维护较快，大家可多做尝试。
+在微信小程序中使用图表插件，这里总结一下echarts的使用，另外还有其他图标库供选择[antv-f2小-程序示例](https://github.com/antvis/wx-f2)（antv-f2是静态的图表，点击无交互）。
+
+我选择echarts是因为是大厂出品且关注度相对较高，采坑的人相对较多，经验帖或者issues丰富，且是动态交互更友好。（虽然它已经八个月没更新了o(╯□╰)o）
 
 ### 引入echarts库
 * 直接下载[echarts](https://github.com/ecomfe/echarts-for-weixin)库，并拷贝ec-canvas文件夹到你的工程中。
@@ -169,19 +171,11 @@ params: {
         }]
 }
 ```
-* 改写`initChart(canvas, width, height)`方法为`initChart(canvas, width, height, params)`，因为params参数势必要在initChart中使用。
+* 改写`initChart(canvas, width, height)`方法为`initChart(canvas, width, height, params)`，因为params参数势必要动态传入。
 * 改写`ec-canvas.js`文件，加入params参数，并修改onInit方法，加入参数params，至此完成组件封装。
 ```js
-// ec-canvas.js文件中加入参数
+// ec-canvas.js文件中加入我们的参数
 properties: {
-    canvasId: {
-      type: String,
-      value: 'ec-canvas'
-    },
-
-    ec: {
-      type: Object
-    },
     params: {
       type: Object,
       observer: function (newVal, oldVal) {
@@ -195,29 +189,38 @@ properties: {
 ```
 
 ```js
-// 加入参数this.data.params
-var query = wx.createSelectorQuery().in(this);
-      query.select('.ec-canvas').boundingClientRect(res => {
-        if (typeof callback === 'function') {
-          this.chart = callback(canvas, res.width, res.height);
-        }
-        else if (this.data.ec && typeof this.data.ec.onInit === 'function') {
-          this.chart = this.data.ec.onInit(canvas, res.width, res.height, this.data.params);
-        }
-        else {
-          this.triggerEvent('init', {
-            canvas: canvas,
-            width: res.width,
-            height: res.height
-          });
-        }
-      }).exec();
+// ec-canvas.js文件中，onInit方法中加入参数this.data.params
+this.chart = this.data.ec.onInit(canvas, res.width, res.height, this.data.params);
 ```
 
 ### 采坑和总结
-* 为什么改写源码？
-```html
-// 一开始没改写源码，而是在methods中对 initChart(canvas, width, height, params) 方法做了封装initPie，然后在wxml中使用bind:init="initPie"，
-然而生成的图表是静态的无交互的，点击无任何反应；而使用econInit
-
+#### 封装echarts组件为什么改写源码？
+>  一开始没改写源码，而是在组件的methods中对 initChart(canvas, width, height, params) 方法做了封装initPie（为了获取父组件传的参数），然后在wxml中使用bind:init="initPie"，但是这样渲染出来的图是静态无交互的，达不到效果。最终使用上面修改源码的方法得到的是正常的图。
+如果你有更好的解决办法请告诉我，非常感谢(#^.^#)
+```js
+/**
+   * 组件的方法列表
+   */
+  methods: {
+    initPie: function(e) {
+      console.log('--initPie--', e)
+      return initChart(e.detail.canvas, e.detail.width, e.detail.height, e.target.dataset.params)
+    }
+  }
 ```
+wxml文件中调用方法initPie
+```html
+<ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ec}}" bind:init="initPie" data-params="{{params}}"></ec-canvas>
+```
+
+###### 参考文章 [小程序引入多个e-charts图表](https://juejin.im/post/5c74af0ef265da2dd0524c9e)
+
+#### 圆环图点击后中间部位渲染出颜色？
+
+点击圆环图，莫名其妙圆圈中间白色部分也有相应颜色，官方没有给出解决办法，在issues中看到[非官方解决办法1](https://github.com/ecomfe/echarts-for-weixin/issues/480)[非官方解决办法2](https://github.com/ecomfe/echarts-for-weixin/issues/314)。
+
+按照上面的解决办法，发现点击图例后又出现了圆环渲染内径的情况，所以取消掉了图例的点击事件`selectedMode： false`。
+
+#### 一个页面中加载多个echarts图表，滚动后图表卡顿或显示为空白
+
+这个问题官方也没解决，请参考issues解决思路[echarts图表空白](https://github.com/ecomfe/echarts-for-weixin/issues/331)
