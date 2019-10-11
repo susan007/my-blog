@@ -224,3 +224,63 @@ wxml文件中调用方法initPie
 #### 一个页面中加载多个echarts图表，滚动后图表卡顿或显示为空白
 
 这个问题官方也没解决，请参考issues解决思路[echarts图表空白](https://github.com/ecomfe/echarts-for-weixin/issues/331)
+
+
+## [wx.navigateTo](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html#%E5%8F%82%E6%95%B0)
+这里想特别说一下小程序跳转新加的事件events和eventChannel，这两个东西可以完成跳转页面之间的通讯。熟悉android或者java的小伙伴一定不陌生，对照handle、eventBus去理解，甚至js中的dispatchEvent事件。
+
+应用场景：待支付订单列表A页面进入订单详情B页面并完成支付，此时通知订单列表A页面刷新数据，诸如此类。
+
+### 概念
+* eventChannel: 用于页面间事件通讯
+* events: 监听被打开页面传递给当前页面的数据
+* eventChannel.emit: 触发一个事件
+* eventChannel.on: 监听一个事件
+
+### 使用
+当前页触发跳转页面事件，跳转到test页面（非tabbar页面）
+```js
+wx.navigateTo({
+    url: '/pages/test',
+    events: {
+        // 监听事件
+        myEvent: function(data) {
+          console.log('被打开的页面给我传数据了', data)
+        },
+        testEvent: function(data) {
+            console.log(data) // 打印：test
+        }
+    },
+    success: function(res) {
+        // 触发myEvent事件
+      res.eventChannel.emit('myEvent', {data: 'now'})
+    }
+})
+```
+test页面接收/传递数据
+```js
+Page({
+    onLoad: function(option) {
+      const eventChannel = this.getOpenerEventChannel()
+      // 监听当前页面触发的事件
+      eventChannel.on('myEvent', function(data) {
+        console.log(data) // 打印：now
+      })
+      eventChannel.emit('testEvent', {data: 'test'})
+    }
+})
+```
+
+## vant-tab样式
+
+## wxs应用
+
+## input标签
+不支持readonly
+
+## 组件多slot
+
+## 组件外部样式定义
+
+## 上传图片组件
+
