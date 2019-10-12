@@ -245,6 +245,7 @@ wx.navigateTo({
     events: {
         // 监听事件
         myEvent: function(data) {
+          // do something
           console.log('被打开的页面给我传数据了', data)
         },
         testEvent: function(data) {
@@ -264,6 +265,7 @@ Page({
       const eventChannel = this.getOpenerEventChannel()
       // 监听当前页面触发的事件
       eventChannel.on('myEvent', function(data) {
+        // do something
         console.log(data) // 打印：now
       })
       eventChannel.emit('testEvent', {data: 'test'})
@@ -271,16 +273,56 @@ Page({
 })
 ```
 
-## vant-tab样式
-
+## vant-weapp使用
+在微信小程序中使用vant-weapp组件库，可以直接用npm安装使用，具体[请戳这里](https://github.com/youzan/vant-weapp)。
 ## wxs应用
-
+wxs是小程序的一套脚本语言(和js非常非常像，但是对es6支持的不够友好)，无法与js互相调用，它可以运行在wxml中。
+```js
+// 定义一个wxs文件 util.wxs
+// 格式化价格
+function formatPrice(num) {
+  return `${num} 元`
+}
+module.exports.formatPrice = formatPrice
+```
+wxml文件中使用
+```html
+// 引入
+<wxs src="./util.wxs" module="util"></wxs>
+<view>商品价格：{{util.formatPrice(num)}}</view>
+```
 ## input标签
-不支持readonly
+注意一个坑，原生input标签不支持readonly属性，目前没找到好的解决方式。
 
-## 组件多slot
+## [自定义组件slot](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html#%E7%BB%84%E4%BB%B6wxml%E7%9A%84slot)
 
-## 组件外部样式定义
-
-## 上传图片组件
+和vue组件插槽用法相似，需要注意的一点是，组件中有多个插槽需要在组件中声明一下启用多插槽，否则无效。
+```js
+Component({
+  options: {
+    multipleSlots: true // 在组件定义时的选项中启用多slot支持
+  }
+})
+```
+## 自定义组件外部样式定义
+自定义组件可以开启接收外部样式的声明，这样别人用你的组件时可自定义外观。
+```js
+// 组件card中定义外部样式类名
+Component({
+  externalClasses: ['custom-class']
+})
+```
+组件card中使用class
+```html
+// 接收外部定义的样式
+<view class="origin-class custom-class">测试</view>
+```
+外部页面使用组件card
+```html
+<view>
+  <card custom-class="my-custom-class"></card>
+</view>
+```
+<!-- ## 上传图片
+写了一个工单反馈页，其中有上传图片功能，抽成了一个组件，有需要的我放出来。 -->
 
