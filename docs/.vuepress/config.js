@@ -102,7 +102,8 @@ module.exports = {
                         ['/WEB/VUE/插件', 'vue插件编写'],
                         ['/WEB/VUE/插槽', 'vue插槽使用'],
                         ['/WEB/VUE/传值', 'vue组件间通讯'],
-                        ['/WEB/VUE/filter', 'vue过滤器']
+                        ['/WEB/VUE/filter', 'vue过滤器'],
+                        ['/WEB/VUE/demo', 'vue2.x项目实例']
                     ]
                 }, {
                     title: 'HTTP',
