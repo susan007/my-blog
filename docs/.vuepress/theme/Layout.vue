@@ -54,6 +54,9 @@
     <!--给除了首页以外的页面设置评论板-->
     <valine v-if="!$page.frontmatter.home"></valine>
     <SWUpdatePopup :updateEvent="swUpdateEvent"/>
+
+    <!--只给首页添加彩带背景-->
+    <evan-you v-if="$page.frontmatter.home" class="bg"/>
   </div>
 </template>
 
@@ -67,9 +70,10 @@ import Sidebar from '../../../node_modules/vuepress/lib/default-theme/Sidebar.vu
 import SWUpdatePopup from '../../../node_modules/vuepress/lib/default-theme/SWUpdatePopup.vue'
 import { resolveSidebarItems } from '../../../node_modules/vuepress/lib/default-theme/util'
 import Valine from "../components/valine";
+import evanYou from "../components/evan-you"
 
 export default {
-  components: {Valine, Home, Page, Sidebar, Navbar, SWUpdatePopup },
+  components: {Valine, Home, Page, Sidebar, Navbar, SWUpdatePopup, evanYou },
 
   data () {
     return {
@@ -182,3 +186,10 @@ export default {
 </script>
 
 <style src="../../../node_modules/vuepress/lib/default-theme/styles/theme.styl" lang="stylus"></style>
+<style>
+  .bg {
+    position: fixed;
+    top: 0;
+    z-index:-1;
+  }
+</style>

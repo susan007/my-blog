@@ -56,7 +56,7 @@ vue2.x项目实例
 
 ## 效果展示
 
-![示例图片](../../.vuepress/public/menu.gif)
+![实例截图](../../.vuepress/public/menu.gif)
 
 ## 关于
 
