@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2",
     "gh-pages": "^2.0.0",
     "vuepress": "^0.14.4"
   },
@@ -36,5 +37,10 @@
       "!**/node_modules/**"
     ],
     "coverageDirectory": "./coverage/"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

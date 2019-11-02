@@ -124,18 +124,27 @@ toDo: function(){
 
 [小程序UI库](https://mina.wiki/eco/ui.html#weui-for-%E5%B0%8F%E7%A8%8B%E5%BA%8F)
 
-## 微信支付
-正在进行中还未验证
-
-* [小程序支付交互流程](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_4&index=3)
-* [预留参考文章](https://segmentfault.com/a/1190000007737052)
-
 
 ## 登录
+用流程图总结一下，如有误请指正。
+![](../.vuepress/public/wx-login.png)
 
-微信小程序登录相关内容，持续更新。
-* [小程序登录流程记录](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)
+[小程序登录流程记录参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)
 
+## 授权
+![](../.vuepress/public/wx-auth.png)
+
+## 获取手机号
+手机号和用户信息必须用按钮来获取了，说是这样更友好。
+
+![](../.vuepress/public/wx-phone.png)
+
+## 微信支付
+![](../.vuepress/public/wx-pay.png)
+
+[小程序支付交互流程](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_4&index=3)
+
+[预留参考文章](https://segmentfault.com/a/1190000007737052)
 
 ## [echarts使用](https://github.com/ecomfe/echarts-for-weixin)
 
