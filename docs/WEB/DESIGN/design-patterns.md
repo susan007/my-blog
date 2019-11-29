@@ -27,6 +27,7 @@ function Cat(name, age) {
  this.name = name
  this.age = age
 }
+// 公共方法
 Cat.prototype.toString = function() {
     return `name: ${this.name} age: ${this.age}`
 }
@@ -98,3 +99,29 @@ let loginModule = (function() {
 // 使用
 loginModule.publicLogin('admin', '123456')
 ```
+
+## 单例模式
+在对象不存在的情况下，返回一个新的对象实例；在对象存在的情况下则返回对象的引用。限制了类的实例化只能为一次。
+
+这种模式在安卓中挺常见，比如安卓中的tcp/udp通讯，要求所有页面的tcp/udp是同一个实例。
+
+```js
+let tcp = (function(){
+    let instance
+    function init() {
+        return new TCP()
+    }
+    return {
+        getInstance() {
+            if(!instance) {
+                instance = init()
+            }
+            return instance
+        }
+    }
+})()
+```
+
+## 观察者模式
+观察者注册观察某些目标的状态，当目标状态发生状态改变时，主动向观察者发送通知并执行观察者的更新方法。
+
