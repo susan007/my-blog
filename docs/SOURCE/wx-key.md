@@ -335,3 +335,232 @@ Component({
 <!-- ## 上传图片
 写了一个工单反馈页，其中有上传图片功能，抽成了一个组件，有需要的我放出来。 -->
 
+
+## 自定义nav
+思路其实挺简单，取消掉自带的nav，把自己写的nav放在页面最顶部即可。
+
+### 配置navigationStyle
+`navigationStyle`取值default则默认使用原生的导航；取值custom则只保留导航栏的胶囊按钮，页面自动从屏幕顶部开始渲染页面，我们把自定义的导航栏放在最顶部即可替代原来的导航栏位置。
+
+#### 全局配置
+顾名思义即一键配置全部页面的`navigationStyle`样式，可在`app.json`中配置。
+```js
+{
+    "window": {
+        "navigationStyle": "custom"
+    }
+}
+```
+注意微信客户端最低版本要求6.6.0
+
+#### 单页面配置
+如果只有一个或少量页面需自定义导航栏，可以给单个页面配置导航样式。比如home页面，只需配置`home.json`即可。
+```js
+{
+    "navigationStyle": "custom"
+}
+```
+注意微信客户端最低版本要求7.0.0
+
+### 自定义导航栏
+和其他组件一样的实现方式，我使用的是cover-view，保证用于最高的层级，防止在地图组件等层级较高的页面无法渲染出来。
+
+思路是利用flex布局，简单粗暴地分成左中右三块，右侧是胶囊占位。最下方留一块空白是防止下拉页面的时候导航栏页跟着下拉。
+```html
+<!--自定义标题栏-->
+<cover-view class="container" style="height:{{statusBarHeight + navBarHeight}}px;line-height:{{statusBarHeight + navBarHeight}}px;">
+  <!--左侧自定义图标-->
+	<cover-view class="container-item container-item-left">
+		<cover-image bindtap="_toMain" class="container-item-left-img" src="/assets/images/icon-nav-main.png"/>
+	</cover-view>
+
+  <!--中间标题-->
+	<cover-view 
+    class="container-item container-item-mid container-item-mid-text" 
+    style="height:{{statusBarHeight + navBarHeight}}px;line-height:{{statusBarHeight + navBarHeight + statusBarHeight}}px;">
+		  {{title}}
+	</cover-view>
+
+  <!--右侧胶囊占位-->
+	<cover-view class="container-item ">
+	</cover-view>
+</cover-view>
+
+<cover-view style="height:{{statusBarHeight + navBarHeight}}px;"></cover-view>
+```
+
+wxss文件
+```css
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-item {
+  width: 33.33%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.container-item-left {
+  justify-content: flex-start;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.container-item-left-img {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+}
+
+.container-item-mid {
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+.container-item-mid-text {
+  font-size: 18px;
+  text-align: center;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+```
+
+js文件
+```js
+// 这是工具函数，to是对跳转页面的封装
+import { to } from '../../utils/util'
+// 获取全局应用实例
+const app = getApp()
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+    title: {
+      type: String,
+      value: '???'
+    }
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    navBarHeight: 44,       
+    statusBarHeight: 20
+  },
+  ready: function () {
+    if (app.globalData) {
+      this.setData({
+        statusBarHeight: app.globalData.statusBarHeight,
+        navBarHeight: app.globalData.navBarHeight
+      })
+    }
+  },
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    /**
+     * 跳转到mine个人信息页
+     * @param {Object} e 
+     */
+    _toMine: function (e) {
+      to('/pages/mine/mine')
+    }
+  }
+})
+```
+
+app.js
+```js
+App({
+  onLaunch: function () {
+    this.initData()
+  },
+  globalData: { // 定义全局数据
+    statusBarHeight: 20,
+    navBarHeight: 44
+  },
+  /**
+   * 获取手机系统信息
+   */
+  initData: function() {
+    wx.getSystemInfo({
+      success: res => {
+        // 获取手机系统数据
+        this.globalData.statusBarHeight = res.statusBarHeight
+        if (res.model.toLowerCase().includes('iphone')) {
+          this.globalData.navBarHeight = 44
+        } else {
+          this.globalData.navBarHeight = 48
+        }
+      }
+    })
+  }
+})
+```
+
+### 兼容低版本
+可设置一个全局变量判断是否渲染自定义导航栏。[详见兼容问题参考文档](https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html)
+
+```js
+// app.js中
+//app.js
+App({
+  onLaunch: function () {
+    this.initData()
+  },
+  globalData: {
+    canUse: false,
+    lowVersion: '7.0.0',
+    lowSdkVersion: '2.4.3'
+  },
+  /**
+   * 初始化系统参数
+   */
+  initData: function() {
+    wx.getSystemInfo({
+      success: res => {
+          // 微信版本号和sdk版本号都符合要求才会渲染
+        if(
+            this.compareVersion(res.version, this.globalData.lowVersion) >= 0 && 
+            this.compareVersion(res.SDKVersion, this.globalData.lowSdkVersion) >= 0) {
+            this.globalData.canUse = true
+        }
+      }
+    })
+  },
+  compareVersion(v1, v2) {
+    v1 = v1.split('.')
+    v2 = v2.split('.')
+    const len = Math.max(v1.length, v2.length)
+    while(v1.length < len) {
+      v1.push('0')
+    }
+    while(v2.length < len) {
+      v2.push('0')
+    }
+    for(let i=0; i< len; i++) {
+      const num1 = parseInt(v1[i])
+      const num2 = parseInt(v2[i])
+      if(num1 > num2) {
+        return 1
+      } else if(num1 < num2) {
+        return -1
+      }
+    }
+    return 0
+  }
+})
+```
+
