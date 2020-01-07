@@ -38,8 +38,8 @@
 }
 ```
 ### 动画分析
-* rotate：旋转。
-* translateX：在x周平移相应的值，旋转半径。
+* rotate：旋转元素。
+* translateX：在x周平移相应的值，給元素一个旋转半径。
 ```css
 @keyframes animateDot1{
   0%{transform:rotate(0) translateX(-12px)}

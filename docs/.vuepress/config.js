@@ -83,7 +83,9 @@ module.exports = {
                         ['/WEB/CSS/单位', '单位之px-em-rem'],
                         ['/WEB/CSS/loading_square', '一个loading动画'],
                         ['/WEB/CSS/12px', '浏览器和12px'],
-                        ['/WEB/CSS/响应式网页', '《响应式网页设计》读书笔记']
+                        ['/WEB/CSS/响应式网页', '《响应式网页设计》读书笔记'],
+                        ['/WEB/CSS/loading-ie', 'ie的Loading动画'],
+                        ['/WEB/CSS/loading-firefox', '偶遇的Loading动画']
                     ]
                 }, {
                     title: 'VUE',
