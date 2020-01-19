@@ -89,6 +89,7 @@ module.exports = {
                     title: 'VUE',
                     collapsable: true,
                     children: [
+                        ['/WEB/VUE/vue-cli3', 'vue-cli3、vue-cli4配置参考'],
                         ['/WEB/VUE/vue01', 'vue-cli脚手架目录一览'],
                         ['/WEB/VUE/vue02', 'vue-cli脚手架之build文件夹上半部'],
                         ['/WEB/VUE/vue03', 'vue-cli脚手架之webpack.base.conf.js'],
