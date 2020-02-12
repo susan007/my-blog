@@ -109,6 +109,12 @@ module.exports = {
                         ['/WEB/VUE/filter', 'vue过滤器'],
                         ['/WEB/VUE/demo', 'vue2.x项目实例']
                     ]
+                },{
+                    title: 'REACT',
+                    collapsable: true,
+                    children: [
+                        ['/WEB/REACT/start', 'React实践和总结']
+                    ]
                 }, {
                     title: 'HTTP',
                     collapsable: true,
