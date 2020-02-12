@@ -104,6 +104,85 @@ const element = React.createElement(
 )
 ```
 
-## 实践
+## 基础页面
+React是一个js库，同样一个React页面或者React组件是以js结尾的，也就是一个js文件，形式如下。
+
+```js
+import React from 'react'
+
+const Header = () => {
+    const action = '登录'
+    return (
+        <form>
+           <input placeholder="输入学号"/>
+           <input placeholder="输入密码"/>
+           <button>{action}</button>
+        </form>
+    )
+}
+
+export default Header
+```
+渲染React页面
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Header from './Header'
+
+ReactDom.render(<Header/>, document.getElementById('root'))
+```
+
+## 组件
+组件名称必须以大写字母开头,React 会将以小写字母开头的组件视为原生 DOM 标签，所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。
+
+编写一个父组件
+```js
+const list = ['西门吹雪', '陆小凤', '花满楼']
+const App = () => {
+    return (
+       <div>
+          <Header title="标题栏"/>
+           <Content list={ list }/>       
+           <Footer title="页脚栏"/>        
+       </div>
+    )
+}
+
+ReactDOM.render(<App/>, document.getElementById('root'))
+```
+编写子组件Header
+```js
+const Header = (props) => {
+    return (
+        <div>{ props.title }</div>
+    )
+}
+```
+
+编写子组件Content
+```js
+const Content = (props) => {
+    return (
+        <ul>
+          {
+              props.list.map((item, index) => (
+                  <li key={index}>排名：{index} 姓名：{item}</li>
+              ))
+          }
+        </ul>
+    )
+}
+```
+
+编写子组件Footer
+```js
+const Footer = (props) => {
+    return (
+        <div>{ props.title }</div>
+    )
+}
+```
+
+## redux
 
 
