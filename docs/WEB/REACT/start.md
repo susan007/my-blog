@@ -104,19 +104,16 @@ const element = React.createElement(
 )
 ```
 
-## 基础页面
+## Basic React Page
 React是一个js库，同样一个React页面或者React组件是以js结尾的，也就是一个js文件，形式如下。
 
 ```js
-import React from 'react'
-
 const Header = () => {
-    const action = '登录'
     return (
         <form>
            <input placeholder="输入学号"/>
            <input placeholder="输入密码"/>
-           <button>{action}</button>
+           <button>登录</button>
         </form>
     )
 }
@@ -129,13 +126,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Header from './Header'
 
-ReactDom.render(<Header/>, document.getElementById('root'))
+ReactDom.render(<Header/>, document.getElementById('root')) // 渲染在某个根节点
 ```
 
-## 组件
-组件名称必须以大写字母开头,React 会将以小写字母开头的组件视为原生 DOM 标签，所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。
+## 组件实例
+可以将复杂的React页面拆分成组件。组件名称必须以大写字母开头,React 会将以小写字母开头的组件视为原生 DOM 标签，所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。
 
-编写一个父组件
+编写一个父组件App
 ```js
 const list = ['西门吹雪', '陆小凤', '花满楼']
 const App = () => {
@@ -152,6 +149,7 @@ ReactDOM.render(<App/>, document.getElementById('root'))
 ```
 编写子组件Header
 ```js
+// 以props接收父组件传递的参数
 const Header = (props) => {
     return (
         <div>{ props.title }</div>
@@ -183,6 +181,93 @@ const Footer = (props) => {
 }
 ```
 
-## redux
+## [redux](https://cn.redux.js.org/docs/basics/Actions.html)
+
+redux是一个工具，主要用于兄弟组件之间的值传递，可以理解为全局变量，每个组件都能访问到该变量，也能够通过提供的方法修改变量的值。
+
+### 基础概念
+#### Action
+描述发生了什么，对象的形式，必须包含type字段,其他字段可有可无，type字段用来描述要做什么。
+
+```js
+const ADD_ITEM = 'ADD_ITEM'
+const action = {
+    type: ADD_ITEM, // 添加待办事项
+    text: 'coding my app' // 今天的任务就是编码
+}
+```
+或者通过方法返回一个对象，这种写法更容易测试和移植
+```js
+export const addItem= () => {
+    return {
+        type: ADD_ITEM, // 添加待办事项
+        text: 'coding my app' // 今天的任务就是编码
+    }
+}
+```
+#### Reducer
+指定该如何响应Action，以及响应后将新数据(state，被保存在单一对象中)发送到Store。reducer是纯函数的形式，接收旧的state和action返回新的state。 
+```js
+const ADD_ITEM = 'ADD_ITEM'
+export default (state, action) => {
+    switch(action.type) {
+        case ADD_ITEM:
+            // 注意，在state副本上做修改
+            return [
+                ...state,
+                {
+                    text: action.text
+                }
+            ]
+        default:
+            return state     
+    }
+}
+```
+reducer需要注意的点：
+* 不允许修改传入的参数
+* 不允许执行有副作用的操作，如路由跳转、API请求等
+* 调用非纯函数
+
+#### Store
+关联Action、Rancher、state(数据/状态)，可以理解为state仓库，对外提供获取、修改、管理state的接口（方法）。
+
+一个Redux应用只有一个单一的store。
+
+##### 主要方法
+* getState()：获取state
+* dispatch(action)：分发action更新state
+* subscribe(listener)：注册监听器
+
+创建store
+```js
+import { createStore } from 'redux'
+import rancher from './rancher'
+
+const store = createStore(rancher)
+
+export default  store
+```
+
+使用store分发action
+```js
+import store from './store'
+import { addItem } from './action'
+
+// 获取状态
+console.log(store.getState())
+
+// 注册监听，每当 dispatch action 的时候就会执行
+const unSubscribe = store.subscribe(callback)
+
+// 分发action
+store.dispath(addItem('8点开早会'))
+
+// 移除监听
+unSubscribe()
+```
+
+## React Hooks
+
 
 

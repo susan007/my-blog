@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Demo</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <style>
+        body, html, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header{
+            border-bottom: 1px solid #aaa;
+            top: 0;
+        }
+
+        .footer {
+            border-top: 1px solid #aaa;
+            bottom: 0;
+        }
+
+        .header, .footer {
+            text-align: center;
+            background-color: #efefef;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+        }
+
+        .main{
+            padding: 5rem 1rem 1rem 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+</body>
+
+<script type="text/babel">
+    const Page = (props) => {
+        return (
+            <div>
+            {props.header}
+    <main className="main">
+        中间内容区由props.chileren构成
+       {props.children}
+    </main>
+        {props.footer}
+    </div>
+    )
+    }
+
+    const Header = () => <h3 className="header">React props组合使用示例</h3>
+
+    const Footer = () => <div className="footer"><a href="https://susan007.github.io/">友情链接</a></div>
+
+    const App = () => {
+        const gods = [
+            {
+                name: '黄飞虎',
+                job: '东岳泰山天齐仁圣大帝'
+            },
+            {
+                name: '崇黑虎',
+                job: '南岳衡山司天昭圣大帝'
+            },
+            {
+            name: '闻聘',
+            job: '中岳嵩山中天崇圣大'}
+        ]
+    return (
+        <Page
+            header={<Header/>}
+            footer={<Footer/>}>
+            <div>
+                <h3>封神榜花名册：</h3>
+                <ul>
+                {
+                    gods.map(item => <li key={item.name}> {item.name}：{item.job} </li>)
+                }
+                </ul>
+            </div>
+        </Page>
+    )
+    }
+
+    ReactDOM.render(
+    <App />,
+        document.getElementById('root')
+    );
+
+</script>
+</html>
