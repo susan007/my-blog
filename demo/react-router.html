@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React router基本配置</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdn.bootcss.com/react-router/5.1.2/react-router.js"></script>
+    <!--<script src="https://unpkg.com/react-router/umd/ReactRouter.min.js"></script>-->
+</head>
+<body>
+<div id="root"></div>
+</body>
+
+<script type="text/babel">
+    const App = (props) => {
+        return (
+            <div>
+                <h1>App</h1>
+                <ul>
+                    <li>
+                        <Link to="/about">About</Link>
+                    </li>
+                    <li>
+                        <Link to="/inbox">Inbox</Link>
+                    </li>
+                </ul>
+                { props.children }
+            </div>
+        )
+    }
+
+    const About = () => {
+        return (
+            <h3>About</h3>
+        )
+    }
+
+    const Home = () => {
+        return (
+            <h3>About</h3>
+        )
+    }
+
+    const Inbox = (props) => {
+        return (
+            <div>
+                <h2>Inbox</h2>
+                { props.children || "Hello World"}
+            </div>
+        )
+    }
+
+    const Message = (props) => {
+        return (
+            <h3>Message { props.params.id }</h3>
+        )
+    }
+
+    ReactDOM.render((
+        <Router history={ browserHistory }>
+            <Route path="/" component={App}>
+                {/* IndexRoute表示最高层级，可设置默认路由*/}
+                <IndexRoute  component={Home}/>
+                <Route path="about" component={About}/>
+                <Route path="inbox" component={Inbox}>
+                    <Route path="message/:id" component={Message}/>
+                </Route>
+            </Route>
+        </Router>
+    ), document.getElementById('root'))
+
+</script>
+</html>

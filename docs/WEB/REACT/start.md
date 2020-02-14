@@ -185,6 +185,8 @@ const Footer = (props) => {
 
 redux是一个工具，主要用于兄弟组件之间的值传递，可以理解为全局变量，每个组件都能访问到该变量，也能够通过提供的方法修改变量的值。
 
+当然，非React库也能使用这个工具。
+
 ### 基础概念
 #### Action
 描述发生了什么，对象的形式，必须包含type字段,其他字段可有可无，type字段用来描述要做什么。
@@ -267,7 +269,86 @@ store.dispath(addItem('8点开早会'))
 unSubscribe()
 ```
 
+## [react-redux](https://cn.redux.js.org/docs/react-redux/)
+react-redux是redux官方出的React绑定库，搭配redux一起食用更佳。这里主要介绍下如何使用，不涉及原理。
+### Provider
+使用react-redux提供的`<Provider/>`在根组件注入Store，这样所有组件都能访问到Store。
+```js
+// 定义reducer
+let reducer = (state, action) => {
+    // do something to update new state, and return
+    return state
+}
+// 定义store
+let store = createStore(reducer)
+// 根组件注入store
+ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+)
+```
+
+### connect()
+通过react-redux的connect方法生成容器组件（容器组件指的是订阅了store的组件，能读取部分数据并使用props把数据传递给要渲染的组件）。
+
+connect可以接收两个参数，一个是将state映射到props，一个是dispatch(action)。
+
+#### 读取state
+mapStateToProps指定如何把redux store state映射到组件的props中，这样组件可以通过`this.props.todos`来获取store中的数据。
+```js
+const getVisibleTodos = (todos, filter) => {
+  switch (filter) {
+    case 'SHOW_COMPLETED':
+      return todos.filter(t => t.completed)
+    case 'SHOW_ACTIVE':
+      return todos.filter(t => !t.completed)
+    case 'SHOW_ALL':
+    default:
+      return todos
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    todos: getVisibleTodos(state.todos, state.visibilityFilter),
+    todo_item: state.todo_item
+  }
+}
+```
+
+#### 分发action
+集中处理`dispatch(action)`o(*^＠^*)o
+```js
+const mapDispatchToProps = dispatch => {
+  return {
+    onTodoClick: id => {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
+```
+
+#### 使用connect
+```js
+import { connect } from 'react-redux'
+
+const VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList) // TodoList是你的组件名
+
+export default VisibleTodoList
+```
+
+[官方参考实例](https://cn.redux.js.org/docs/basics/ExampleTodoList.html)
+
+## [React Router](https://react-guide.github.io/react-router-cn/docs/guides/basics/RouteConfiguration.html)
+官方文档非常详细了，并且有实践Demo，建议看官方文档。
+
 ## React Hooks
+
 
 
 

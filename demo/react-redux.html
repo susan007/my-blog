@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React redux 实例</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdn.bootcss.com/redux/4.0.4/redux.js"></script>
+    <script src="https://cdn.bootcss.com/react-redux/7.1.1/react-redux.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+</body>
+
+<script type="text/babel">
+    const defaultVal = {
+        todo: '上山打老虎',
+        todos: []
+    }
+    // reducer
+    const reducer = (state = defaultVal, action) => {
+        return state
+    }
+    // store
+    const store = createStore(reducer)
+
+    const Header = () => <h1>头部</h1>
+    const Footer = () => <h1>脚部</h1>
+    const Content = () => <h1>中间</h1>
+    const App = () => {
+        return (
+            <div>
+                <Header/>
+                <Content/>
+                <Footer/>
+            </div>
+        )
+    }
+
+    // 根组件注入store
+    ReactDOM.render(
+        <Provider store="{store}">
+            <App />
+        </Provider>,
+        document.getElementById('root')
+    );
+</script>
+</html>
