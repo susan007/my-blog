@@ -347,8 +347,110 @@ export default VisibleTodoList
 ## [React Router](https://react-guide.github.io/react-router-cn/docs/guides/basics/RouteConfiguration.html)
 官方文档非常详细了，并且有实践Demo，建议看官方文档。
 
-## React Hooks
+## [React Hooks](https://zh-hans.reactjs.org/docs/hooks-intro.html)
+React组件的写法有两种。
+* class形式的，可以获取组件状态、生命周期等；缺点是笨重。
+* 纯函数类型的无状态组件，写法简单轻巧；缺点是无法获取状态、生命周期那些。
 
+所以React hook出现就是为了解决在纯函数中获取状态以及其他涉及生命周期的方法。
 
+### 主要hook介绍及使用
+#### 规则
+* 只在React函数的最顶层调用hook
+* 只在React函数中调用Hook
+#### useState
+主要用来获取、添加、修改state。
+
+* 声明state变量
+```js
+const defaultName = 'susan'
+// 第一个参数name是当前state 第二个参数setState是更新当前state的回调，一般以set开头
+const [name, setName] = useState(defaultName)
+```
+* 读取state
+```js
+<p>姓名：{ name }</p>
+```
+
+* 更新
+```js
+<button onClick={() => setName('新姓名')}>更新姓名：{ name }</button>
+```
+
+#### useEffect
+这个钩子主要用来执行某些副作用的操作(ಥ﹏ಥ)
+
+```js
+// 注意 可以使用多个useEffect实现功能分离
+function Header() {
+    const [checked, setChecked] = useState(true)
+    const [user, setUser] = useState({})
+    
+    // 不需要清除的副作用
+    useEffect(() => {
+        document.title = `checked status: ${checked}`
+    })
+    
+    // 需要清除的副作用
+    useEffect(() => {
+        function handleStatusChange(status) {
+          setIsOnline(status.isOnline);
+        }
+        ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+        // Specify how to clean up after this effect:
+        // 返回的函数是effect的可选清除机制。比如清除某些订阅、定时器啥的
+        return function cleanup() {
+          ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+        };
+      });
+    
+    // 跳过Effect优化性能，useEffect()第二个参数表示，当userId变化时才去执行effect。
+    useEffect(() => {
+        fetch(`xxx/api/user/.${userId}`)
+         .then(res => res.json())
+         .then(res => {
+             setUser(res.data)
+         }).catch(error => {
+             console.log(error)
+         })
+    }, [userId])
+    
+    return (
+        <div>
+          <button onClick={() => setChecked(!checked)}>切换勾选状态</button>
+        </div>
+    )
+}
+```
+
+#### 自定义hook
+目的是提取逻辑到可重用的函数中
+```js
+const usePerson = (personId) => {
+    const [person, setPerson] = useState(null)
+    
+    useEffect(() => {
+        fetch(`xxx/api/person/.${personId}`)
+                 .then(res => res.json())
+                 .then(res => {
+                     setPerson(res.data)
+                 }).catch(error => {
+                     console.log(error)
+                 })
+    }, [personId])
+    
+    return person
+}
+export default  usePerson
+```
+在组件中使用
+```js
+function Card() {
+    const person = usePerson(110)
+    return (
+       <h1> person.name </h1>
+    )
+}
+```
 
 
