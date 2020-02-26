@@ -28,5 +28,12 @@ $ npm run build
 * 蓝色框框内为可安装的exe文件，可直接在win系统打开。
 * 绿色框框内为文件索引。bolckmap是基于分配块的位图索引。
 
+
+## 封包工具[`Enigma Virtual Box`](https://enigmaprotector.com/en/downloads.html)
+这一步是为了把build文件夹生成的可执行文件进行简化，集中到一个单纯的exe文件中，并且还有压缩的效果。和上述的`Advanced Installer`工具雷同，只不过使用起来更简单。
+![示例图片](../.vuepress/public/img_source/exe-build.png)
+
+
 ###### <a href="https://electronjs.org/">electron 官网链接</a>
+###### [封包教程参考](https://newsn.net/say/enigma-virtual-box-electron.html)
 
