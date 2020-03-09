@@ -1,4 +1,8 @@
 
+这篇博客翻译自外网一篇科普文章[Looking at All 13 Javascript Proxy Traps](https://alligator.io/js/proxy-traps#playing-with-keys)
+
+主要内容是关于Proxy traps的示例。
+
 ## Traps？
 什么是Traps？Traps(陷阱)是内部方法检测工具。每当与对象进行交互时，就在调用基本的内部方法。
 
@@ -121,6 +125,45 @@ try {
 }
 ```
 
+### ownKeys
+下面的例子利用ownKeys traps控制访问服务器返回的数据的属性。
+```js
+    const createPatameters = (reqBody, allowed) => {
+        return new Proxy(reqBody, {
+            ownKeys: function(target) {
+                return Object.keys(target).filter(key => allowed.includes(key))
+            }
+        })
+    }
+    // 白名单属性
+    const allowedKeys = ['name', 'age']
+    // 服务器返回数据
+    const reqBody = {name: 'susan', age: 18, job: 'coder'}
+    // 定义proxy对象 发现能访问到的属性已经被限制
+    const proxyKeys = createPatameters(reqBody, allowedKeys)
+  
+    const parametersKeys = Object.keys(proxyKeys)
+    console.log(parametersKeys) // name age
 
-[参考文档](https://alligator.io/js/proxy-traps/)
-[参考文档](https://hackernoon.com/introducing-javascript-es6-proxies-1327419ab413)
+    const parameterValues = parametersKeys.map(key => reqBody[key])
+    console.log(parameterValues) // susan 18
+```
+
+### has
+在数组中使用in操作符
+```js
+function createInArray(arr) {
+    return new Proxy(arr, {
+        has: function(target, prop) {
+            return target.includes(prop)
+        }
+    })
+}
+
+const heros = createInArray(['西门吹雪', '陆小凤'])
+console.log('西门吹雪' in heros) // true
+console,log('武松' in heros) // false
+
+```
+
+感谢作者精彩的科普，[再次奉上原文链接！](https://alligator.io/js/proxy-traps/)
