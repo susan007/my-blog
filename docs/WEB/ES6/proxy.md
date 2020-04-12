@@ -163,7 +163,107 @@ function createInArray(arr) {
 const heros = createInArray(['西门吹雪', '陆小凤'])
 console.log('西门吹雪' in heros) // true
 console,log('武松' in heros) // false
+```
+
+### Apply
+这里举一个缓存代理的例子
+```js
+const createCachedFunction = (func) => {
+    const handler = {
+        cache: {},
+        apply: function (target, that, args) {
+            const argument = args[0]
+            if(this.cache.hasOwnProperty(argument)) {
+                return this.cache[argument]
+            }
+            this.cache[argument] = target(...args)
+            rerurn this.cache[argument]
+        }
+    }
+    return new Proxy(func, handler)
+}
 
 ```
 
-感谢作者精彩的科普，[再次奉上原文链接！](https://alligator.io/js/proxy-traps/)
+```js
+const awesomeSlowFunction = (arg) => {
+    const promise = new Promise(function(resolve, reject) {
+        window.setTimeout(()=> {
+            resolve('awesome' + arg)
+        }, 3000)
+    })
+    return promise
+}
+
+const cachedFunction = createCachedFunction(awesomeSlowFunction)
+```
+
+```js
+const main = async () => {
+    const awesomeCode = await cachedFunction('code')
+    const awesomeYou = await cachedFunction('you')
+    const awesomeCode2 = await cachedFunction('code')
+}
+
+main()
+```
+
+### defineproperty
+直接在一个对象上定义一个新属性或者修改一个对象的现有属性并返回该对象
+
+```js
+// 定义handler
+const handler = {
+    defineProperty: function (target, prop, descriptor) {
+        const { enumerable, writable } = descriptor
+        // 不允许设置可枚举属性或可写属性
+        if(enumerable === true || writable === true) {
+            return false
+        }
+        if(prop === 'age' && typeof descriptor.value!== 'number') {
+            return false
+        }
+        return Object.defineProperty(target, prop, descriptor)
+    }
+}
+
+const profile = { name: 'bob', friends: ['AL']}
+const profileProxied = new Proxy(profile, handler)
+profileProxied.age = 30 // 将会失败，因为age是个可枚举属性
+
+Object.defineProperty(profileProxied, 'age', {value: 23, enumerable: false, writable: false})
+
+```
+### constgruct
+构造函数陷阱
+```js
+const extend = (superClass, subClass) => {
+  const handler = {
+    construct: function (target, args) {
+      const newObject = {}
+      // we populate the new object with the arguments from
+      superClass.call(newObject, ...args);
+      subClass.call(newObject, ...args);
+      return newObject;
+    },
+  }
+  return  new Proxy(subClass, handler);
+}
+
+const Person = function(name) {
+  this.name = name;
+};
+
+const Boy = extend(Person, function(name, age) {
+  this.age = age;
+  this.gender = 'M'
+});
+
+const Peter = new Boy('Peter', 13);
+console.log(Peter.gender);  // 'M'
+console.log(Peter.name); // 'Peter'
+console.log(Peter.age);  // 13
+```
+
+
+感谢作者的科普，[再次奉上原文链接！](https://alligator.io/js/proxy-traps/)

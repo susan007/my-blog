@@ -133,7 +133,8 @@ module.exports = {
                         ['/WEB/ES6/箭头函数', '箭头函数'],
                         ['/WEB/ES6/Es6运行环境', 'Es6执行环境搭建'],
                         ['/WEB/ES6/集合','集合'],
-                        ['/WEB/ES6/Promise', 'Promise使用']
+                        ['/WEB/ES6/Promise', 'Promise使用'],
+                        ['/WEB/ES6/proxy', '13个javascript代理traps']
                     ]
                 }
             ],
