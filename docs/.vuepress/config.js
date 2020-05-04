@@ -71,7 +71,8 @@ module.exports = {
                         ['/WEB/JS/this', 'this'],
                         ['/WEB/JS/async', 'async/await使用'],
                         ['/WEB/JS/节流防抖', '节流和防抖'],
-                        ['/WEB/JS/作用域链', '作用域链']
+                        ['/WEB/JS/作用域链', '作用域链'],
+                        ['/WEB/JS/拷贝', 'javascript之拷贝']
                     ]
                 }, {
                     title: 'CSS',
