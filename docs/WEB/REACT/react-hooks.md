@@ -1,4 +1,4 @@
-总结一下React Hook的介绍和使用
+总结一下[React Hooks](https://zh-hans.reactjs.org/docs/hooks-intro.html)的介绍和使用
 
 ### 函数组件
 本质上就是一个js纯函数，是无状态的，是定义组件最简单的方式，等同于class定义的组件是等效的。
@@ -56,7 +56,7 @@ const user = useUser(userId)
 console.log(user)
 ```
 
-
+### 其他注意事项
 
 
 
