@@ -181,7 +181,8 @@ module.exports = {
                         ['/SOURCE/mermarid', 'mermaid流程图绘制'],
                         ['/SOURCE/notion', 'notion笔记工具'],
                         ['/SOURCE/时间戳', '时间戳'],
-                        ['/SOURCE/area', 'element-ui省市区资源整理']
+                        ['/SOURCE/area', 'element-ui省市区资源整理'],
+                        ['/SOURCE/android_build', '记Android studio构建失败']
                     ]
                 },{
                 title: '望穿秋水',
