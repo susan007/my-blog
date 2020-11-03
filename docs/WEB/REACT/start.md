@@ -139,7 +139,7 @@ const App = () => {
     return (
        <div>
           <Header title="标题栏"/>
-           <Content list={ list }/>       
+           <Box list={ list }/>       
            <Footer title="页脚栏"/>        
        </div>
     )
@@ -159,7 +159,7 @@ const Header = (props) => {
 
 编写子组件Content
 ```js
-const Content = (props) => {
+const Box = (props) => {
     return (
         <ul>
           {

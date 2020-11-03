@@ -114,7 +114,8 @@ module.exports = {
                     title: 'REACT',
                     collapsable: true,
                     children: [
-                        ['/WEB/REACT/start', 'React实践和总结']
+                        ['/WEB/REACT/start', 'React实践和总结'],
+                        ['/WEB/REACT/react-hooks', 'React Hooks']
                     ]
                 }, {
                     title: 'HTTP',
